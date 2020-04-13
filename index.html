@@ -1,11 +1,69 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link rel="stylesheet" type="text/css" href="style.css">
 		<script src="./jquery-3.4.1.slim.min.js"></script>
 		<script type="text/javascript" src="./app.js"></script>
 	</head>
 
 	<body>
+		<div id="menu">
+			<li>Welcome</li>
+			<li>Login</li>
+			<li>Register</li>
+			<li>About Me</li>
+		</div>
+		<div id="welcome">
+			<button id="register_but">Register</button>
+			<button id="login_but">Login</button>
+		</div>
+		<div id="register">
+			<p>
+				<label>User name:</label>
+				<input id="register_user" type="text">
+			</p>
+			<p>
+				<label>Password:</label>
+				<input id="register_password" type="text">
+			</p>
+			<p>
+				<label>Full name:</label>
+				<input id="user" type="text">
+			</p>
+			<p>
+				<label>E-mail address:</label>
+				<input id="user" type="text">
+			</p>
+			
+			<p>
+				<label for="start">Date of birth:</label>
+
+<input type="date" id="start" name="trip-start"
+       value="2000-01-01"
+       min="1920-01-01" max="2020-04-13">
+			</p>
+		</div>
+		<div id="login">
+			<p>
+				<label>User name:</label>
+				<input id="user" type="text">
+			</p>
+			<p>
+				<label>Password:</label>
+				<input id="user" type="text">
+			</p>
+			<p>
+				<button id="login_but">Login</button>
+			</p>		
+		</div>
+		<div id="about">
+
+		</div>
+
+
+		<div id="setting">
+
+		</div>
 		<div id="score">
 			<label for="lblScore">SCORE:</label>
 			<input id="lblScore" type="text" />

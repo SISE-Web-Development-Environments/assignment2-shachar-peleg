@@ -5,15 +5,24 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="./jquery-3.4.1.slim.min.js"></script>
 	<script type="text/javascript" src="./app.js"></script>
-	<!-- <script src="js/jquery.validate.js"></script>
-	<script src="js/signup-form.js"></script> -->
-	<script src="js/validation.js"></script>
+	<script src="js/jquery.validate.js"></script>
+	<script src="js/jquery.form.js"></script>
+	<script type="text/javascript" src="./validation.js"></script>
 
 
 	<script>
 		function show(shown, hidden1) {
 			document.getElementById(shown).style.display = 'block';
 			document.getElementById(hidden1).style.display = 'none';
+			return false;
+		}
+	</script>
+	<script>
+		function showall(shown, hidden1 , hidden2 , hidden3) {
+			document.getElementById(shown).style.display = 'block';
+			document.getElementById(hidden1).style.display = 'none';
+			document.getElementById(hidden2).style.display = 'none';
+			document.getElementById(hidden3).style.display = 'none';
 			return false;
 		}
 	</script>
@@ -25,29 +34,40 @@
 			return false;
 		}
 	</script>
-	<script>
-		function checkIfAlreadyRegister(password, userName) {
-			let password = document.getElementById(password).value;
-			let userName = document.getElementById(userName).value;
-		}
-	</script>
 
 </head>
 
 <body>
-	<div id="welcome" style="text-align: center;">
+	<nav>
+		<div class="navigation" id="navigation">
+	
+			<a id="welcomeLink" onclick="showall('welcome','login','register','game')"  style="color: #f2f2f2;">Welcome  &nbsp&nbsp  </a>
+	
+			<a id="loginLink" onclick="showall('login','welcome','register','game')"  style="color: #f2f2f2;">Login  &nbsp&nbsp  </a>
+	
+			<a id="requestLink" onclick="showall('register','login','welcome','game')"  style="color: #f2f2f2;">Register  &nbsp&nbsp  </a>
+	
+			<a id="about" style="color: #f2f2f2;">About</a>
+	
+		</div>
+	
+	</nav>
 
-		</br>
-		<a href="#" onclick="return show('login','welcome');">
-			<button id="login_but">log in</button>
-		</a>
-		</br>
+	<div id="welcome" class="welcome">
+	</br>
+</br>
+		<strong>WELCOME</strong>
 		<a href="#" onclick="return show('register','welcome');">
 			<button id="register_but">register</button>
 		</a>
+		<a href="#" onclick="return show('login','welcome');">
+			<button id="login_but">log in</button>
+		</a>
 	</div>
 
-	<div id="login" style="display:none">
+	<div id="login" class="login" style="display:none">
+		<form id="loginForm" name="loginForm" method="get" autocomplete="off" action="">
+
 		<p>
 			<label>User name:</label>
 			<input id="user" type="text">
@@ -65,34 +85,35 @@
 		<a href="#" onclick="return show('welcome','login');">
 			<button id="returnToWelcomeFromLogin">return to welcome</button>
 		</a>
+		</form>
 	</div>
 
 
 	<div class="register" id="register" style="display:none">
-		<form id="signupForm" method="get" action="ready" autocomplete="off">
+		<form id="signupForm" name="signupForm" method="get" autocomplete="off" action="">
 			<p>
 				<label for="fullname">Full name:</label>
-				<input id="fullname" name="fullname" type="text">
+				<input id="fullname" name="fullname" type="text"  required>
 			</p>
 			<p>
 				<label>User name:</label>
-				<input id="register_user" name="register_user" type="text">
+				<input id="register_user" name="register_user" type="text" required>
 			</p>
 			<p>
 				<label>Password:</label>
-				<input id="register_password" name="register_password" type="password">
+				<input id="register_password" name="register_password" type="password" required>
 			</p>
 			<p>
 				<label>confirm Password:</label>
-				<input id="register_confirmpassword" name="register_confirmpassword" type="password">
+				<input id="register_confirmpassword" name="register_confirmpassword" type="password" required>
 			</p>
 			<p>
 				<label>E-mail address:</label>
-				<input id="email" name="email" type="email">
+				<input id="email" name="email" type="email" required>
 			</p>
 			<p>
 				<label for="start">Date of birth:</label>
-				<input type="date" id="start" name="trip-start" value="2000-01-01" min="1920-01-01" max="2020-04-13">
+				<input type="date" id="date" name="birthdate" value="2000-01-01" min="1920-01-01" max="2020-04-13">
 			</p>
 			<p>
 					<button id="register" type="submit">register</button>
@@ -107,58 +128,16 @@
 		</form>
 	
 	
-		<script>
-		$().ready(function(){
+	</div>
 
-			$("singupForm").validate({
-				rules: {
-					fullname:"required",
-					username:
-					{
-						required:true,
-						minlength:2
-					},
-					password:{
-						required:true,
-						minlength:5
-					},
-					confirmpassword: {
-						required:true,
-						minlength:6,
-						equalTo:"#password"
-					},
-					email: {
-						required:true,
-						email:true
-					}
-				},
-				messages: {
-					fullname:"please enter your full name",
-					username:{
-						required:"please enter a username",
-						minlength:"your username must consist of at least 2 characters"
-					},
-					password:{
-						required:"please provide a password",
-						minlength:"your password must be at least 6 characters long"
-					},
-					confirmpassword:{
-						required:"please confirm your password",
-						equalTo:"please enter the same password as above"
-					}
-		
-				}
-			})
-		});
-		
-		$("username").focus(function(){
-			var fullname=$("#fullname").val();
-			if(fullname && !this.value)
-			{
-				this.value=fullname;
-			}
-		});
-	</script>
+	<div id="aboutFrame" class="modal">
+		<div class="modal-content">
+		  <span class="close">&times;</span>
+		  <p>here we will write the about the project
+		  </br>
+			  can't wait to do it
+		  </p>
+	</div>
 	</div>
 
 	<div id="game" style="display:none">
@@ -174,6 +153,37 @@
 			<canvas id="canvas" height="600" width="600"></canvas>
 		</div>
 	</div>
+
+<script> 
+	var modal = document.getElementById("aboutFrame");
+	var btn = document.getElementById("about");
+	
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
+	
+	// When the user clicks on the button, open the modal
+	btn.onclick = function() {
+	  modal.style.display = "block";
+	}
+	
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+	  modal.style.display = "none";
+	}
+	
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+	  if (event.target == modal || event.keyCode == 27 ||event.key === "Escape" || event.key === "Esc") {
+		modal.style.display = "none";
+	  }
+	}
+
+	$(document).keydown(function(e) {
+  var code = e.keyCode || e.which;
+  if (code == 27) $(".w3-modal").hide();
+});
+
+	</script>
 
 
 </body>

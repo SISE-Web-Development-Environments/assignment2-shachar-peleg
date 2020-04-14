@@ -1,32 +1,42 @@
-li{
-    float: left;
-}
 p{
     text-align: center;
 }
+a { 
+    text-decoration: none; 
+}
+.navigation {
+    background-color: #333;
+    font-size: 20px;
+    height: 30px;
+    padding: 14px 16px;
+}
 form {
     text-align: center;
+    background: rgba(125, 149, 184, 0.61);
+    color: rgb(7, 1, 1);
     padding: 20px;
-    background: #2c3e50;
-    color: #fff;
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
-    border-radius: 4px;
     width: 500px;
     margin: 25px auto;
   }
-  .container {
-    width: 500px;
-    margin: 25px auto;
+  .welcome{
+    text-align: center;
+    font-size: 30px;
   }
-
-  form button {
-    border: 0;
+  .welcome button{
+    background: #ffffff;
+    color: rgb(12, 2, 2);
+    margin-top: 10px;
     margin-bottom: 3px;
+    width: 20%;
+    margin: 25px auto;
+    font-size: 15px;
+    height: 10px;
+    line-height: 30px;
+    cursor: pointer;
+    border: 0;
     display: block;
-    width: 100%;
   }
-  form input {
+ form input {
     height: 25px;
     line-height: 25px;
     background: #fff;
@@ -37,10 +47,64 @@ form {
     box-sizing: border-box;
   }
   form button {
+    background: #22e6cc;
+    color: rgb(12, 2, 2);
+    margin-top: 10px;
+    margin-bottom: 3px;
+    width: 100%;
     height: 30px;
     line-height: 30px;
-    background: #e67e22;
-    color: #fff;
-    margin-top: 10px;
+    cursor: pointer;
+    border: 0;
+    display: block;
+  }
+
+  .error {
+    color: red;
+    margin-left: 5px;
+  }
+  
+  label.error {
+    display: inline;
+  }
+
+
+
+
+
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 35%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
     cursor: pointer;
   }

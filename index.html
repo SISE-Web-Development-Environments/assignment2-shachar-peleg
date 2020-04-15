@@ -7,33 +7,11 @@
 	<script type="text/javascript" src="./app.js"></script>
 	<script src="js/jquery.validate.js"></script>
 	<script src="js/jquery.form.js"></script>
-	<script type="text/javascript" src="./validation.js"></script>
+	<script type="text/javascript" src="validation.js"></script>
+	<script type="text/javascript" src="storage.js"></script>
 
 
-	<script>
-		function show(shown, hidden1) {
-			document.getElementById(shown).style.display = 'block';
-			document.getElementById(hidden1).style.display = 'none';
-			return false;
-		}
-	</script>
-	<script>
-		function showall(shown, hidden1 , hidden2 , hidden3) {
-			document.getElementById(shown).style.display = 'block';
-			document.getElementById(hidden1).style.display = 'none';
-			document.getElementById(hidden2).style.display = 'none';
-			document.getElementById(hidden3).style.display = 'none';
-			return false;
-		}
-	</script>
-	<script>
-		function showandalert(shown, hidden1) {
-			alert("you sucssefuly register to the system")
-			document.getElementById(shown).style.display = 'block';
-			document.getElementById(hidden1).style.display = 'none';
-			return false;
-		}
-	</script>
+
 
 </head>
 
@@ -70,15 +48,15 @@
 
 		<p>
 			<label>User name:</label>
-			<input id="user" type="text">
+			<input id="user" class="user" type="text">
 		</p>
 		<p>
 			<label>Password:</label>
-			<input name="password" class="valid" id="password" aria-invalid="false" aria-required="true"
+			<input name="password" class="password" id="password" aria-invalid="false" aria-required="true"
 				type="password">
 		</p>
 		<p>
-			<a href="#" onclick="return show('game','login');">
+			<a href="#" onclick="return checkIfPasswordCorrect(	user,	document.getElementById('password'));">
 				<button id="goToGame">Login</button>
 			</a>
 		</p>
@@ -112,11 +90,11 @@
 				<input id="email" name="email" type="email" required>
 			</p>
 			<p>
-				<label for="start">Date of birth:</label>
+				<label>Date of birth:</label>
 				<input type="date" id="date" name="birthdate" value="2000-01-01" min="1920-01-01" max="2020-04-13">
 			</p>
 			<p>
-					<button id="register" type="submit">register</button>
+					<button id="register_btn" type="submit" onclick="return validate();" >register</button>
 			</p>
 
 			<!-- <a href="#" onclick="return showandalert('welcome','register');"> -->

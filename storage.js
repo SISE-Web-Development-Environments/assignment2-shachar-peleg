@@ -1,3 +1,15 @@
+function someFunc()
+{
+	if(validate()==true)
+	{
+		alert("valid");
+		let user=createUser(document.getElementById('register_user').value , document.getElementById('fullname').value , document.getElementById('email').value , document.getElementById('register_password').value, document.getElementById('date').value);
+		registerMember(user);
+		showandalert('welcome','register');
+		return true;
+	}
+	return false;
+}
 
 function registerMember(user) {
 	localStorage.setItem(getUserName(user), user);

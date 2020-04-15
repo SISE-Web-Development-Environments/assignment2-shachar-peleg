@@ -47,6 +47,7 @@ function validate() {
 			}
 		}
 	});
+	return true;
 }
 function focus() {
 	$("username").focus(function () {

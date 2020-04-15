@@ -9,6 +9,7 @@
 	<script src="js/jquery.form.js"></script>
 	<script type="text/javascript" src="validation.js"></script>
 	<script type="text/javascript" src="storage.js"></script>
+	<link rel="icon" href="spongBob.jpg" type="image/icon type">
 
 
 
@@ -16,6 +17,14 @@
 </head>
 
 <body>
+	<style>
+		body {
+		  background-image: url('backGround.png');
+		  background-repeat: no-repeat;
+		  background-attachment: fixed;
+		  background-size: cover;
+		}
+		</style>
 	<nav>
 		<div class="navigation" id="navigation">
 	
@@ -94,7 +103,7 @@
 				<input type="date" id="date" name="birthdate" value="2000-01-01" min="1920-01-01" max="2020-04-13">
 			</p>
 			<p>
-					<button id="register_btn" type="submit" onclick="return validate();" >register</button>
+					<button id="register_btn" type="submit" onclick="return someFunc();" >register</button>
 			</p>
 
 			<!-- <a href="#" onclick="return showandalert('welcome','register');"> -->

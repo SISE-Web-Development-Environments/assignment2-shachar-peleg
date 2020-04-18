@@ -120,7 +120,7 @@
 	<div id="aboutFrame" class="modal">
 		<div class="modal-content">
 		  <span class="close">&times;</span>
-		  <p>here we will write the about the project
+		  <p> here we will write the about the project
 		  </br>
 			  can't wait to do it
 		  </p>
@@ -160,15 +160,17 @@
 	
 	// When the user clicks anywhere outside of the modal, close it
 	window.onclick = function(event) {
-	  if (event.target == modal || event.keyCode == 27 ||event.key === "Escape" || event.key === "Esc") {
+	  if (event.target == modal ) {
 		modal.style.display = "none";
 	  }
 	}
 
-	$(document).keydown(function(e) {
-  var code = e.keyCode || e.which;
-  if (code == 27) $(".w3-modal").hide();
-});
+	$(document).keyup(function (e) {
+        if (e.keyCode === 27) {
+            $("#aboutFrame").hide();
+        }
+	}
+);
 
 	</script>
 

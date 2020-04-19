@@ -3,14 +3,17 @@
 
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<script src="./jquery-3.4.1.slim.min.js"></script>
-	<script type="text/javascript" src="./app.js"></script>
-	<script src="js/jquery.validate.js"></script>
-	<script src="js/jquery.form.js"></script>
-	<script type="text/javascript" src="validation.js"></script>
-	<script type="text/javascript" src="storage.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<link rel="icon" href="spongBob.jpg" type="image/icon type">
+	<script src="./jquery-3.4.1.slim.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+	
 
+	<script type="text/javascript" src="validation.js"></script>
+	<script type="text/javascript" src="./app.js"></script>
+	<script type="text/javascript" src="storage.js"></script>
 
 
 
@@ -28,11 +31,11 @@
 	<nav>
 		<div class="navigation" id="navigation">
 	
-			<a id="welcomeLink" onclick="showall('welcome','login','register','game')"  style="color: #f2f2f2;">Welcome  &nbsp&nbsp  </a>
+			<a id="welcomeLink" onclick="showall('welcome','login','register','game')"  style="color: #f2f2f2;"> Welcome  &nbsp&nbsp</a>
 	
-			<a id="loginLink" onclick="showall('login','welcome','register','game')"  style="color: #f2f2f2;">Login  &nbsp&nbsp  </a>
+			<a id="loginLink" onclick="showall('login','welcome','register','game')"  style="color: #f2f2f2;">Login  &nbsp&nbsp</a>
 	
-			<a id="requestLink" onclick="showall('register','login','welcome','game')"  style="color: #f2f2f2;">Register  &nbsp&nbsp  </a>
+			<a id="requestLink" onclick="showall('register','login','welcome','game')"  style="color: #f2f2f2;">Register  &nbsp&nbsp</a>
 	
 			<a id="about" style="color: #f2f2f2;">About</a>
 	
@@ -78,21 +81,26 @@
 
 	<div class="register" id="register" style="display:none">
 		<form id="signupForm" name="signupForm" method="get" autocomplete="off" action="">
+			
 			<p>
-				<label for="fullname">Full name:</label>
-				<input id="fullname" name="fullname" type="text"  required>
+				<label for="firstName">First name:</label>
+				<input id="firstName" name="firstName" type="text"  required>
+			</p>
+			<p>
+				<label for="lastName">Last name:</label>
+				<input id="lastName" name="lastName" type="text"  required>
 			</p>
 			<p>
 				<label>User name:</label>
-				<input id="register_user" name="register_user" type="text" required>
+				<input id="userName" name="userName" type="text" required>
 			</p>
 			<p>
 				<label>Password:</label>
-				<input id="register_password" name="register_password" type="password" required>
+				<input id="registerPassword" name="registerPassword" type="password" required>
 			</p>
 			<p>
 				<label>confirm Password:</label>
-				<input id="register_confirmpassword" name="register_confirmpassword" type="password" required>
+				<input id="registerConfirmpassword" name="registerConfirmpassword" type="password" required>
 			</p>
 			<p>
 				<label>E-mail address:</label>
@@ -103,7 +111,7 @@
 				<input type="date" id="date" name="birthdate" value="2000-01-01" min="1920-01-01" max="2020-04-13">
 			</p>
 			<p>
-					<button id="register_btn" type="submit" onclick="return someFunc();" >register</button>
+					<button id="register_btn" type="submit">register</button>
 			</p>
 
 			<!-- <a href="#" onclick="return showandalert('welcome','register');"> -->
@@ -170,7 +178,8 @@
             $("#aboutFrame").hide();
         }
 	}
-);
+	);
+	
 
 	</script>
 

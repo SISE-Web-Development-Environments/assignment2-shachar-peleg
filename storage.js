@@ -8,6 +8,7 @@ function someFunc()
 		showandalert('welcome','register');
 		return true;
 	}
+	alert("not valid");
 	return false;
 }
 

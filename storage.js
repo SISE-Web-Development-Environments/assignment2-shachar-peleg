@@ -33,9 +33,11 @@ function getPassword(user)
 function checkIfPasswordCorrect() {
 	let username=document.getElementById('user').value
 	let password=document.getElementById('password').value
-	alert("hey");
+	//alert("hey");
 	if(username=='p' && password=='p')
 	{
+		var body = document.getElementsByTagName('body')[0];
+        body.style.backgroundImage = 'url(back.jpg)';
 		return show('game','login');
 	}
 	else
@@ -43,6 +45,8 @@ function checkIfPasswordCorrect() {
 	let newUser = localStorage.getItem(username);
 	if(newUser.getPassword()==password)
 	{
+		var body = document.getElementsByTagName('body')[0];
+        body.style.backgroundImage = 'url(back.jpg)';
 		return show('game','login');
 	}
 }
@@ -59,11 +63,21 @@ function checkIfUserNameCorrect(username) {
 
 
 function show(shown, hidden1) {
+	if(shown!="game")
+	{
+		var body = document.getElementsByTagName('body')[0];
+        body.style.backgroundImage = 'url(4.jpg)';
+	}
 	document.getElementById(shown).style.display = 'block';
 	document.getElementById(hidden1).style.display = 'none';
 	return false;
 }
 function showall(shown, hidden1 , hidden2 , hidden3) {
+	if(shown!="game")
+	{
+		var body = document.getElementsByTagName('body')[0];
+        body.style.backgroundImage = 'url(4.jpg)';
+	}
 	document.getElementById(shown).style.display = 'block';
 	document.getElementById(hidden1).style.display = 'none';
 	document.getElementById(hidden2).style.display = 'none';
@@ -71,6 +85,11 @@ function showall(shown, hidden1 , hidden2 , hidden3) {
 	return false;
 }
 function showandalert(shown, hidden1) {
+	if(shown!="game")
+	{
+		var body = document.getElementsByTagName('body')[0];
+        body.style.backgroundImage = 'url(4.jpg)';
+	}
 	alert("you sucssefuly register to the system")
 	document.getElementById(shown).style.display = 'block';
 	document.getElementById(hidden1).style.display = 'none';

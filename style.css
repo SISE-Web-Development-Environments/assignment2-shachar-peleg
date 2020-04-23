@@ -19,9 +19,22 @@ form {
     margin: 25px auto;
   }
   .welcome{
-    text-align: center;
     font-size: 40px;
+    text-align: center;
   }
+  canvas {
+/* for put the canvas in the center
+    padding-left: 100;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+*/
+    
+    width: 730px;
+    border:1px solid #000000;
+}
+  
   .welcome button{
     background: #030000;
     color: rgb(255, 255, 255);
@@ -101,6 +114,7 @@ form {
     font-size: 28px;
     font-weight: bold;
   }
+ 
   
   .close:hover,
   .close:focus {

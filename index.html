@@ -22,7 +22,7 @@
 <body>
 	<style>
 		body {
-		  background-image: url('backGround.png');
+		  background-image: url('4.jpg');
 		  background-repeat: no-repeat;
 		  background-attachment: fixed;
 		  background-size: cover;
@@ -135,7 +135,15 @@
 	</div>
 	</div>
 
-	<div id="game" style="display:none">
+	<div class="game" id="game" style="display:none">
+		<style>
+			.game {
+			  background-image: url('back.jpg');
+			  background-repeat: no-repeat;
+			  background-attachment: fixed;
+			  background-size: cover;
+			}
+			</style>
 		<div id="score">
 			<label for="lblScore">SCORE:</label>
 			<input id="lblScore" type="text" />
@@ -145,7 +153,17 @@
 			<input id="lblTime" type="text" />
 		</div>
 		<div id="game">
-			<canvas id="canvas" height="600" width="600"></canvas>
+			<canvas id="canvas" height="600" width="850"></canvas>
+			<img id="burger" src="4.png" width="50" height="50" hidden/>
+			<img id="pacmanright" src="right.png" width="50" height="50" hidden/>
+			<img id="pacmanleft" src="left.png" width="50" height="50" hidden/>
+			<img id="pacmanup" src="up.png" width="50" height="50" hidden/>
+			<img id="pacmandown" src="down.png" width="50" height="50" hidden/>
+			<img id="monster" src="monster.png" width="50" height="50" hidden/>
+			<img id="monster2" src="monster2.png" width="50" height="50" hidden/>
+			<img id="monster3" src="monster3.png" width="50" height="50" hidden/>
+
+
 		</div>
 	</div>
 

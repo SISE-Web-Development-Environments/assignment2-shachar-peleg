@@ -13,7 +13,7 @@ function someFunc()
 }
 
 function registerMember(user) {
-	localStorage.setItem(getUserName(user), user);
+	sessionStorage.setItem(getUserName(user), user);
 }
 
 function createUser(pusername , pfullname , pemail , ppassword , pdateOfBirth) {
@@ -36,18 +36,18 @@ function checkIfPasswordCorrect() {
 	//alert("hey");
 	if(username=='p' && password=='p')
 	{
-		var body = document.getElementsByTagName('body')[0];
-        body.style.backgroundImage = 'url(back.jpg)';
-		return show('game','login');
+		//var body = document.getElementsByTagName('body')[0];
+        //body.style.backgroundImage = 'url(back.jpg)';
+		return show('setting','login');
 	}
 	else
 	{
-	let newUser = localStorage.getItem(username);
+	let newUser = sessionStorage.getItem(username);
 	if(newUser.getPassword()==password)
 	{
-		var body = document.getElementsByTagName('body')[0];
-        body.style.backgroundImage = 'url(back.jpg)';
-		return show('game','login');
+		//var body = document.getElementsByTagName('body')[0];
+        //body.style.backgroundImage = 'url(back.jpg)';
+		return show('setting','login');
 	}
 }
 	alert("user name / password are wrong. try again")
@@ -68,8 +68,19 @@ function show(shown, hidden1) {
 		var body = document.getElementsByTagName('body')[0];
         body.style.backgroundImage = 'url(4.jpg)';
 	}
+	else{
+		var body = document.getElementsByTagName('body')[0];
+        body.style.backgroundImage = 'url(back.jpg)';
+	}
+	if(hidden1=='setting')
+	{
+		var modal = document.getElementById("setting");
+		modal.style.display = "none";
+	}
+	else{
+		document.getElementById(hidden1).style.display = 'none';
+	}
 	document.getElementById(shown).style.display = 'block';
-	document.getElementById(hidden1).style.display = 'none';
 	return false;
 }
 function showall(shown, hidden1 , hidden2 , hidden3) {
@@ -77,6 +88,10 @@ function showall(shown, hidden1 , hidden2 , hidden3) {
 	{
 		var body = document.getElementsByTagName('body')[0];
         body.style.backgroundImage = 'url(4.jpg)';
+	}
+	else{
+		var body = document.getElementsByTagName('body')[0];
+        body.style.backgroundImage = 'url(back.jpg)';
 	}
 	document.getElementById(shown).style.display = 'block';
 	document.getElementById(hidden1).style.display = 'none';
@@ -89,6 +104,10 @@ function showandalert(shown, hidden1) {
 	{
 		var body = document.getElementsByTagName('body')[0];
         body.style.backgroundImage = 'url(4.jpg)';
+	}
+	else{
+		var body = document.getElementsByTagName('body')[0];
+        body.style.backgroundImage = 'url(back.jpg)';
 	}
 	alert("you sucssefuly register to the system")
 	document.getElementById(shown).style.display = 'block';

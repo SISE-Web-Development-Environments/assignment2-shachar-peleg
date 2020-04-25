@@ -153,19 +153,19 @@
 	<legend>movement setting</legend>
 			<p>
 				<label for="moveUp">move Up:</label>
-				<input id="settingsMoveUp" type="text" class="form-control" name="keyUp"> <!--onclick="setKeyboardControlKey('Up')" onkeydown="return false;" >-->
+				<input id="settingsMoveUp" type="text" class="form-control" name="keyUp"  onkeydown="return setKeyboardControlKey(event , 'Up');" >
 			</p>
 			<p>
 				<label for="moveDown">move Down:</label>
-				<input id="settingsMoveDown" type="text" class="form-control" name="keyDown"> <!--onclick="setKeyboardControlKey('Up')" onkeydown="return false;" >-->
+				<input id="settingsMoveDown" type="text" class="form-control" name="keyDown"onkeydown="return setKeyboardControlKey(event ,'Down')" >
 			</p>
 			<p>
 				<label for="moveLeft">move Left:</label>
-				<input id="settingsMoveLeft" type="text" class="form-control" name="keyLeft"> <!--onclick="setKeyboardControlKey('Up')" onkeydown="return false;" >-->
+				<input id="settingsMoveLeft" type="text" class="form-control" name="keyLeft"onkeydown="return setKeyboardControlKey(event ,'Left')">
 			</p>
 			<p>
 				<label for="moveRight">move Right:</label>
-				<input id="settingsMoveRight" type="text" class="form-control" name="keyRight"> <!--onclick="setKeyboardControlKey('Up')" onkeydown="return false;" >-->
+				<input id="settingsMoveRight" type="text" class="form-control" name="keyRight"onkeydown="return setKeyboardControlKey(event ,'Right')">
 			</p>
 	</fieldset>
 </form>
@@ -216,10 +216,10 @@
 				<p>
 				<label for="5Points">which for 5 points:</label>
 
-				<INPUT TYPE="Checkbox" Name="5Points1" ID="5Points1" Value="img1">  
+				<INPUT TYPE="radio" Name="5Points" ID="5Points1" Value="img1">  
 					  <img id="img1" class="img1" src="4.png" alt="some img">
 
-				<INPUT TYPE="Checkbox" Name="5Points2" ID="5Points2" Value="img2">
+				<INPUT TYPE="radio" Name="5Points" ID="5Points2" Value="img2">
 					<img id="img2" class="img2" src="pineapple.png" alt="some img">
 
 
@@ -227,20 +227,20 @@
 
 				<label for="15Points">which for 15 points:</label>
 				
-				<INPUT TYPE="Checkbox" Name="15Points1" ID="15Points1" Value="img1">  
+				<INPUT TYPE="radio" Name="15Points" ID="15Points1" Value="img1">  
 					  <img id="img1" class="img1" src="jelly1.png" alt="some img">
 
-				<INPUT TYPE="Checkbox" Name="15Points2" ID="15Points2" Value="img2">
+				<INPUT TYPE="radio" Name="15Points" ID="15Points2" Value="img2">
 					<img id="img2" class="img2" src="jelly2.png" alt="some img">
 
 				</br>
 
 				<label for="25Points">which for 25 points:</label>
 				
-				<INPUT TYPE="Checkbox" Name="25Points1" ID="25Points1" Value="img1">  
+				<INPUT TYPE="radio" Name="25Points" ID="25Points1" Value="img1">  
 					  <img id="img1" class="img1" src="monster2.png" alt="some img">
 
-				<INPUT TYPE="Checkbox" Name="25Points2" ID="25Points2" Value="img2">
+				<INPUT TYPE="radio" Name="25Points" ID="25Points2" Value="img2">
 					<img id="img2" class="img2" src="plankton1.png" alt="some img">
 			</p>	
 		</fieldset>
@@ -260,21 +260,21 @@
 			<label for="monsters">how many monsters:</label>
 		</br>
 
-			<INPUT TYPE="Checkbox" class="1monster" Name="1monster" ID="1monster" Value="img1">  
+			<INPUT TYPE="radio" class="1monster" Name="monster" ID="1monster" Value="img1">  
 				  <img id="img7" class="img7" src="monster.png" alt="some img">
 			</br>
-			<INPUT TYPE="Checkbox" Name="2monster" ID="2monster" Value="img2">
+			<INPUT TYPE="radio" Name="monster" ID="2monster" Value="img2">
 				<img id="img7" class="img7" src="monster.png" alt="some img">
 				<img id="img7" class="img7" src="monster.png" alt="some img">
 			</br>
 
-			<INPUT TYPE="Checkbox" Name="3monster" ID="3monster" Value="img2">
+			<INPUT TYPE="radio" Name="monster" ID="3monster" Value="img2">
 				<img id="img7" class="img7" src="monster.png" alt="some img">
 				<img id="img7" class="img7" src="monster.png" alt="some img">
 				<img id="img7" class="img7" src="monster.png" alt="some img">
 			</br>
 
-			<INPUT TYPE="Checkbox" Name="4monster" ID="4monster" Value="img2">
+			<INPUT TYPE="radio" Name="monster" ID="4monster" Value="img2">
 				<img id="img7" class="img7" src="monster.png" alt="some img">
 				<img id="img7" class="img7" src="monster.png" alt="some img">
 				<img id="img7" class="img7" src="monster.png" alt="some img">	

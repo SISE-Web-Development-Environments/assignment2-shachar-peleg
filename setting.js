@@ -1,5 +1,8 @@
 
 var moveUp;
+var moveDown;
+var moveRight;
+var moveLeft;
 var howManyPoints;
 var fivepoint1;
 var fivepoint2;
@@ -13,9 +16,28 @@ var monster3;
 var monster4;
 var time;
 
+function setKeyboardControlKey(event , way)
+{
+if(way == 'Up')
+{
+	moveUp = event.keyCode;
+}
+else if(way == 'Down')
+{
+	moveDown = event.keyCode;
+}
+else if(way == 'Right')
+{
+	moveRight = event.keyCode;
+}
+else if(way == 'Left')
+{
+	moveLeft = event.keyCode;
+}
+}
+
 function GetSetting()
 {	
-	moveUp=document.getElementById("settingsMoveUp").value;
 	howManyPoints = document.getElementById("points").value;
 	fivepoint1 = document.getElementById("5Points1").checked;
 	fivepoint2 = document.getElementById("5Points2").checked;
@@ -36,11 +58,10 @@ function GetSetting()
 
 function randomSetting()
 {
-
-	//var moveUp=keysDown[38];
-	//var moveUp=keysDown[40];
-	//var moveUp=keysDown[37]
-	//var moveUp=keysDown[39]
+	moveUp=38;
+	moveDown=40;
+	moveRight=39;
+	moveLeft=37;
 
 	var numRandom=Math.random();
 	howManyPoints = numRandom*40+50;

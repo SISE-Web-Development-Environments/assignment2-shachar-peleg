@@ -69,8 +69,8 @@
 				type="password">
 		</p>
 		<p>
-			<a href="#" onclick="return checkIfPasswordCorrect(	user,	document.getElementById('password'));">
-				<button id="goToGame">Login</button>
+			<a href="#" onclick="login()">
+				<button id="goToGame" >Login</button>
 			</a>
 		</p>
 		<a href="#" onclick="return show('welcome','login');">
@@ -115,7 +115,6 @@
 					<button id="register_btn" type="submit">register</button>
 			</p>
 
-			<!-- <a href="#" onclick="return showandalert('welcome','register');"> -->
 
 			<a href="#" onclick="return show('welcome','register');">
 				<button id="returnToWelcomeFromRegister">return to welcome</button>
@@ -362,11 +361,12 @@
 	}
 	
 	// When the user clicks anywhere outside of the modal, close it
+	/*
 	window.onclick = function(event) {
 	  if (event.target == modal ) {
 		modal.style.display = "none";
 	  }
-	}
+	}*/
 
 	$(document).keyup(function (e) {
         if (e.keyCode === 27) {

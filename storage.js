@@ -1,62 +1,42 @@
-function someFunc()
-{
-	if(validate()==true)
-	{
-		alert("valid");
-		let user=createUser(document.getElementById('register_user').value , document.getElementById('fullname').value , document.getElementById('email').value , document.getElementById('register_password').value, document.getElementById('date').value);
-		registerMember(user);
-		showandalert('welcome','register');
-		return true;
-	}
-	alert("not valid");
-	return false;
-}
 
-function registerMember(user) {
-	sessionStorage.setItem(getUserName(user), user);
-}
 
-function createUser(pusername , pfullname , pemail , ppassword , pdateOfBirth) {
-	var user={username:pusername , fullname:pfullname , email:pemail , password:ppassword , dateOfBirth:pdateOfBirth};
-	return user;
-}
+function checkIfPasswordCorrect(username,password) {
+	console.log(username.value);	
 
-function getUserName(user) {
-	return user.username;
-}
+	let userPassword = localStorage.getItem(username);
 
-function getPassword(user)
-{
-	return user.password;
-}
+	console.log(userPassword);	
 
-function checkIfPasswordCorrect() {
-	let username=document.getElementById('user').value
-	let password=document.getElementById('password').value
-	//alert("hey");
-	if(username=='p' && password=='p')
+	if(userPassword==password)
 	{
 		//var body = document.getElementsByTagName('body')[0];
-        //body.style.backgroundImage = 'url(back.jpg)';
+		//body.style.backgroundImage = 'url(back.jpg)';
 		return show('setting','login');
+		//debugger;
+
 	}
 	else
 	{
-	let newUser = sessionStorage.getItem(username);
-	if(newUser.getPassword()==password)
-	{
-		//var body = document.getElementsByTagName('body')[0];
-        //body.style.backgroundImage = 'url(back.jpg)';
-		return show('setting','login');
-	}
+		alert("user name / password are wrong. try again")
+		return false;
+	}	
 }
-	alert("user name / password are wrong. try again")
+
+
+function store(username, password){
+	if(!checkIfUserNameCorrect(username)){
+		console.log("password" + password);
+		localStorage.setItem(username,password);
+		
+		return showandalert('welcome','register');
+	}
+	alert("this user name is already exist, please pick another user name");
 	return false;
 }
 
 function checkIfUserNameCorrect(username) {
 	var user = localStorage.getItem(username);
-	if(user!=null || username==p)
+	if(user!=null)
 		return true;
 	return false;
 }
@@ -114,3 +94,40 @@ function showandalert(shown, hidden1) {
 	document.getElementById(hidden1).style.display = 'none';
 	return false;
 }
+
+
+
+	/*
+	register_btn.onclick=function(){
+		const un=document.getElementById("userName");
+		const pw=document.getElementById("registerPassword");
+		const register_btn=document.getElementById("register_btn");
+		const key=un.value;
+		const value=pw.value;
+		store(key,value);
+	};
+*/
+
+	
+	function login(){
+		const loginUser=document.getElementById("user");
+		const loginPassword=document.getElementById("password");
+		const key=loginUser.value;
+		const value=loginPassword.value;
+		if(checkIfUserNameCorrect(key)){
+			checkIfPasswordCorrect(key,value);
+		}
+	}
+
+	/*
+	localStorage.setItem("p","p");
+	//localStorage.removeItem("pppppp");
+	//key=localStorage.key(0);
+	//myUser=localStorage.getItem("pppp")
+	//value=localStorage.value;
+	console.log(localStorage);
+	//console.log(myUser);
+	//console.log(value);
+	
+</script>
+*/

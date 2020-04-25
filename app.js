@@ -10,21 +10,39 @@ var interval;
 var pos=4;
 $(document).ready(function() {
 	context = canvas.getContext("2d");
-	Start();
+	//Start();
 });
+function howManyMonster()
+{
+if(monster1==true)
+return 1;
+if(monster2==true)
+return 2;
+if(monster3==true)
+return 3;
+if(monster4==true)
+return 4;
+}
 
 function Start() {
 	board = new Array();
 	score = 0;
 	pac_color = "yellow";
 	var cnt = 140;
-	var food_remain = 50;
+	var food_remain = howManyPoints;//50;
 	var pacman_remain = 1;
-	var monsters_remain=2;
+	var monsters_remain=howManyMonster();//2;
 	start_time = new Date();
 	for (var i = 0; i < 14; i++) {
 		board[i] = new Array();
 		for (var j = 0; j < 10; j++) {
+			if(i==6 && j==6)
+				{
+					shape.i = i;
+					shape.j = j;
+					pacman_remain--;
+					board[i][j] = 2;
+				}
 			makeWalls(i);
 			var randomNum = Math.random();
 			if (randomNum <= (1.0 * food_remain) / cnt && board[i][j]!=4) {
@@ -201,6 +219,7 @@ function Draw(x) {
 			center.x = i * 60 + 30;
 			center.y = j * 60 + 30;
 			if (board[i][j] == 2) {
+
 				if(x==null)
 				{
 					x=pos
@@ -233,11 +252,22 @@ function Draw(x) {
 					var img = document.getElementById("pacmanright");
 					ctx.drawImage(img, center.x-24, center.y-24 , 50 , 50);
 				}	
-			} else if (board[i][j] == 1) {
+			} 
+			else if (board[i][j] == 1) {
+				if(fivepoint1==true)
+				{
 				var c = document.getElementById("canvas");
   				var ctx = c.getContext("2d");
 				  var img = document.getElementById("burger");
 				  ctx.drawImage(img, center.x-24, center.y-24 , 50 , 50);
+				}
+				else
+				{
+					var c = document.getElementById("canvas");
+  				var ctx = c.getContext("2d");
+				  var img = document.getElementById("pineapple");
+				  ctx.drawImage(img, center.x-24, center.y-24 , 50 , 50);
+				}
 			} 
 			else if (board[i][j] == 3) {
 				var c = document.getElementById("canvas");
@@ -252,22 +282,48 @@ function Draw(x) {
 				context.fill();
 			}
 			else if (board[i][j] == 5) {
+				if(fifteenPoint1==true)
+				{
 				var c = document.getElementById("canvas");
 					var ctx = c.getContext("2d");
-					var img = document.getElementById("monster2");
+					var img = document.getElementById("jelly1");
 					ctx.drawImage(img, center.x-24, center.y-24 , 50 , 50);
+				}
+				else
+				{
+					var c = document.getElementById("canvas");
+					var ctx = c.getContext("2d");
+					var img = document.getElementById("jelly2");
+					ctx.drawImage(img, center.x-24, center.y-24 , 50 , 50);
+				}
 			}
 			else if (board[i][j] == 6) {
+				if(twentyfivepoint1==true)
+				{
 				var c = document.getElementById("canvas");
 					var ctx = c.getContext("2d");
-					var img = document.getElementById("monster3");
+					var img = document.getElementById("plankton1");
 					ctx.drawImage(img, center.x-24, center.y-24 , 50 , 50);
+				}
+				else
+				{
+					var c = document.getElementById("canvas");
+					var ctx = c.getContext("2d");
+					var img = document.getElementById("plankton2");
+					ctx.drawImage(img, center.x-24, center.y-24 , 50 , 50);
+				}
 			}
 		}
 	}
 }
 
 function UpdatePosition() {
+	if(shape.i == undefined)
+	{
+		var emptyCell=findRandomEmptyCell();
+		shape.i=emptyCell.i;
+		shape.j=emptyCell.j;
+	}
 	board[shape.i][shape.j] = 0;
 	var x = GetKeyPressed();
 	if (x == 1) {
@@ -358,3 +414,5 @@ function UpdatePosition() {
 		monsterPos.j=monsterPosY;
 	}
 }
+
+

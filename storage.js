@@ -1,4 +1,13 @@
 
+	function login(){
+		const loginUser=document.getElementById("user");
+		const loginPassword=document.getElementById("password");
+		const key=loginUser.value;
+		const value=loginPassword.value;
+		if(checkIfUserNameCorrect(key)){
+			checkIfPasswordCorrect(key,value);
+		}
+	}
 
 function checkIfPasswordCorrect(username,password) {
 	console.log(username.value);	
@@ -61,7 +70,7 @@ function show(shown, hidden1) {
 		document.getElementById(hidden1).style.display = 'none';
 	}
 	document.getElementById(shown).style.display = 'block';
-	return false;
+	return true;
 }
 function showall(shown, hidden1 , hidden2 , hidden3) {
 	if(shown!="game")
@@ -77,7 +86,7 @@ function showall(shown, hidden1 , hidden2 , hidden3) {
 	document.getElementById(hidden1).style.display = 'none';
 	document.getElementById(hidden2).style.display = 'none';
 	document.getElementById(hidden3).style.display = 'none';
-	return false;
+	return true;
 }
 function showandalert(shown, hidden1) {
 	if(shown!="game")
@@ -92,7 +101,7 @@ function showandalert(shown, hidden1) {
 	alert("you sucssefuly register to the system")
 	document.getElementById(shown).style.display = 'block';
 	document.getElementById(hidden1).style.display = 'none';
-	return false;
+	return true;
 }
 
 
@@ -109,15 +118,7 @@ function showandalert(shown, hidden1) {
 */
 
 	
-	function login(){
-		const loginUser=document.getElementById("user");
-		const loginPassword=document.getElementById("password");
-		const key=loginUser.value;
-		const value=loginPassword.value;
-		if(checkIfUserNameCorrect(key)){
-			checkIfPasswordCorrect(key,value);
-		}
-	}
+
 
 	/*
 	localStorage.setItem("p","p");

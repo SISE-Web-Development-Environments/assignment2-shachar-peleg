@@ -1,6 +1,7 @@
 var context;
 var shape = new Object();
 var monsterPos = new Object();
+var monstersArray= new Array();
 var board;
 var score;
 var pac_color;
@@ -38,7 +39,7 @@ function Start(){
 	}
 
 	generetaWalls();
-	generateMonsters(monsters_remain);
+	generateMonsters(monsters_remain, monstersArray);
 	generatePacman();
 	console.log("3");
 	generateFood();
@@ -117,12 +118,14 @@ function Draw(x) {
 				  ctx.drawImage(img, center.x-24, center.y-24 , 50 , 50);
 				}
 			} 
+			/*
 			else if (board[i][j] == 3) {
 				var c = document.getElementById("canvas");
   				var ctx = c.getContext("2d");
 				  var img = document.getElementById("monster");
 				  ctx.drawImage(img, center.x-24, center.y-24 , 50 , 50);
 			}
+			*/
 			else if (board[i][j] == 4) {
 				context.beginPath();
 				context.rect(center.x - 30, center.y - 30, 60, 60);
@@ -163,6 +166,7 @@ function Draw(x) {
 			}
 		}
 	}
+	drawMonsters();
 }
 
 function UpdatePosition() {
@@ -237,7 +241,7 @@ function movePacman(x)
 	}
 }
 
-function updatePositionToMonster()
+function updatePositionToMonster()//need to add monster as argument or to do for all monstersArray
 	{
 		var posX=pos.i;
 		var posY=pos.j;
@@ -330,7 +334,6 @@ function howManyMonster(){
 function generetaWalls(){
 	board[1][1]=4;
 	board[1][3]=4;
-	board[1][5]=4;
 	board[1][4]=4;
 	board[1][7]=4;
 	board[1][6]=4;
@@ -340,57 +343,95 @@ function generetaWalls(){
 	board[2][7]=4;
 
 	board[3][1]=4;
+	board[3][2]=4;
 	board[3][3]=4;
 	board[3][5]=4;
 	board[3][7]=4;
+	board[3][8]=4;
 
 	board[4][1]=4;
 	board[4][3]=4;
 	board[4][5]=4;
-	board[4][6]=4;
 	board[4][7]=4;
 
-	board[6][4]=4;
+	board[5][1]=4;
+	board[5][3]=4;
+	board[5][5]=4;
+	board[5][6]=4;
+	board[5][7]=4;
+
+	board[6][1]=4;
+	board[6][3]=4;
 	board[6][5]=4;
-	board[6][8]=4;
+	board[6][6]=4;
+	board[6][7]=4;
 
-	board[7][4]=4;
-	board[7][5]=4;
-	board[7][8]=4;
+	board[7][6]=4;
+	board[7][9]=4;
 
-	board[9][1]=4;
-	board[9][3]=4;
-	board[9][5]=4;
+	board[8][1]=4;
+	board[8][3]=4;
+	board[8][4]=4;
+	board[8][8]=4;
+	board[8][9]=4;
+
 	board[9][6]=4;
-	board[9][7]=4;
+	board[9][9]=4;
 
 	board[10][1]=4;
 	board[10][3]=4;
 	board[10][5]=4;
+	board[10][6]=4;
 	board[10][7]=4;
 
 	board[11][1]=4;
 	board[11][3]=4;
+	board[11][5]=4;
 	board[11][7]=4;
 
 	board[12][1]=4;
+	board[12][2]=4;
 	board[12][3]=4;
 	board[12][5]=4;
-	board[12][4]=4;
 	board[12][7]=4;
-	board[12][6]=4;
+	board[12][8]=4;
 
+	board[13][1]=4;
+	board[13][3]=4;
+	board[13][7]=4;
+
+	board[14][1]=4;
+	board[14][3]=4;
+	board[14][4]=4;
+	board[14][6]=4;
+	board[14][7]=4;
 }
-function generateMonsters(monstersNum){
+function generateMonsters(monstersNum, monstersArray){
 	board[0][0]=3;
+	var monsterPos0 = new Object();
+	monsterPos0.i=0;
+	monsterPos0.j=0;
+	monstersArray[0]=monsterPos0;
 	if(monstersNum>1){
 		board[15][9]=3;
+		var monsterPos1 = new Object();
+		monsterPos1.i=15;
+		monsterPos1.j=9;
+		monstersArray[1]=monsterPos1;
 	}
 	if(monstersNum>2){
 		board[0][9]=3;
+		var monsterPos2 = new Object();
+		monsterPos2.i=0;
+		monsterPos2.j=9;
+		monstersArray[2]=monsterPos2;
 	}
 	if(monstersNum>3){
 		board[15][0]=3;
+		var monsterPos3 = new Object();
+		monsterPos3.i=15;
+		monsterPos3.j=0;
+		monstersArray[3]=monsterPos3;
 	}
 	console.log("finish monster");
 }
@@ -423,6 +464,31 @@ function generateFood(){
 	console.log("finish food");
 
 }
+
+function pacmanMeetMonster(){
+	for(index=0; index<monstersArray.length;index++){
+		if(shape.i==monstersArray[index].i && shape.j==monstersArray[index].j){
+			return true;
+			debugger;
+		}
+		else{
+			return false;
+		}
+	}
+}
+
+function drawMonsters(){
+	var center = new Object();
+	for(index=0;index<monstersArray.length;index++){
+		center.x = monstersArray[index].i * 60 + 30;
+		center.y = monstersArray[index].j * 60 + 30;
+		var c = document.getElementById("canvas");
+		var ctx = c.getContext("2d");
+		var img = document.getElementById("monster");
+		ctx.drawImage(img, center.x-24, center.y-24 , 50 , 50);
+	}
+}
+
 
 function sound(src) {
 	this.sound = document.createElement("audio");

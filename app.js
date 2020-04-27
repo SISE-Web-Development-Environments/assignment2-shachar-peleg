@@ -7,9 +7,10 @@ var pac_color;
 var start_time;
 var time_elapsed;
 var interval;
+var interval2;
 var pos=4;
 var x ;
-var lives;
+var lives=5;
 var src;
 var Mysound;
 var monsters_remain;
@@ -23,7 +24,7 @@ function Start(){
 	Mysound.play();
 	board = new Array();
 	score = 0;
-	lives=5;
+	//lives=5;
 	pac_color = "yellow";
 	var cnt = 160;
 	var pacman_remain = 1;
@@ -53,6 +54,8 @@ function Start(){
 		},false
 	);
 	interval = setInterval(UpdatePosition, 250);
+	interval2 = setInterval(getLives, 250);
+
 }
 
 function Draw(x) {
@@ -434,4 +437,11 @@ function sound(src) {
 	this.stop = function(){
 	  this.sound.pause();
 	}
+  }
+
+  function getLives()
+  {
+	document.getElementById("display").innerHTML = lives;
+
+	//document.getElementById("lives").innerHTML = lives;
   }

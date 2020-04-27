@@ -65,7 +65,7 @@ function randomSetting()
 
 	var numRandom=Math.random();
 	howManyPoints = numRandom*40+50;
-
+	howManyPoints=parseInt(howManyPoints);
 	var numRandom2=Math.random();
 	if(numRandom2>0.5)
 	{
@@ -133,7 +133,10 @@ function randomSetting()
 	
 	var numRandom6=Math.random();
 	 time = numRandom6*240+60;
+	 time=parseInt(time);
+	 
 
+	 console.log("setting");
 	 Start();
 	return show('game' , 'setting');
 }

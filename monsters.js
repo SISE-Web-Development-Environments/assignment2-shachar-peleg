@@ -19,6 +19,7 @@ function howManyMonster(){
 }
 
 function generateMonsters(monstersNum, monstersArray){
+	//debugger;
 	var monsterPos0 = new Object();
 	monsterPos0.i=0;
 	monsterPos0.j=0;
@@ -41,7 +42,7 @@ function generateMonsters(monstersNum, monstersArray){
 		monsterPos3.j=0;
 		monstersArray[3]=monsterPos3;
 	}
-	debugger;
+	//debugger;
 	console.log("finish monster");
 }
 

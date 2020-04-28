@@ -111,7 +111,7 @@ function Draw(x) {
 					ctx.drawImage(img, center.x-24, center.y-24 , 50 , 50);
 				}	
 			} 
-			else if (board[i][j] == 1) {
+			else if (board[i][j] == 1 && !MonsterMeetFood(i,j)) {
 				if(fivepoint1==true)
 				{
 				var c = document.getElementById("canvas");
@@ -133,7 +133,7 @@ function Draw(x) {
 				context.fillStyle = "black"; //color
 				context.fill();
 			}
-			else if (board[i][j] == 5) {
+			else if (board[i][j] == 5 && !MonsterMeetFood(i,j)) {
 				if(fifteenPoint1==true)
 				{
 				var c = document.getElementById("canvas");
@@ -149,7 +149,7 @@ function Draw(x) {
 					ctx.drawImage(img, center.x-24, center.y-24 , 50 , 50);
 				}
 			}
-			else if (board[i][j] == 6) {
+			else if (board[i][j] == 6 && !MonsterMeetFood(i,j)) {
 				if(twentyfivepoint1==true)
 				{
 				var c = document.getElementById("canvas");
@@ -176,6 +176,16 @@ function Draw(x) {
 	drawMonsters();
 }
 
+function MonsterMeetFood(i,j)
+{
+	for(index=0; index<monstersArray.length;index++){
+		if(i==monstersArray[index].i && j==monstersArray[index].j){
+			return true;
+		}
+	}
+	return false;
+}
+
 function UpdatePosition() {
 	board[shape.i][shape.j] = 0;
 	x=GetKeyPressed();
@@ -198,7 +208,14 @@ function UpdatePosition() {
 	time=time+20;
 	}
 	if (pacmanMeetMonster()) {
-		if(lives==1)
+		lives--;
+		score=score-10;
+		if(score<0)
+			{
+				score=0;
+			}
+			
+		if(lives==0)
 		{
 		window.clearInterval(interval);
 		Mysound.stop();
@@ -206,14 +223,13 @@ function UpdatePosition() {
 		}
 		else
 		{
-			lives--;
-			score=score-10;
 			generatePacman();
 		}
 	}
 	else{
 		board[shape.i][shape.j] = 2;
 	}
+
 	if (score ==scoreToWin) {//just for now
 		//window.clearInterval(interval);
 		Mysound.stop();

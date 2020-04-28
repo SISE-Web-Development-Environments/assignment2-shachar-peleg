@@ -19,32 +19,29 @@ function howManyMonster(){
 }
 
 function generateMonsters(monstersNum, monstersArray){
-	board[0][0]=3;
 	var monsterPos0 = new Object();
 	monsterPos0.i=0;
 	monsterPos0.j=0;
 	monstersArray[0]=monsterPos0;
 	if(monstersNum>1){
-		board[15][9]=3;
 		var monsterPos1 = new Object();
 		monsterPos1.i=15;
 		monsterPos1.j=9;
 		monstersArray[1]=monsterPos1;
 	}
 	if(monstersNum>2){
-		board[0][9]=3;
 		var monsterPos2 = new Object();
 		monsterPos2.i=0;
 		monsterPos2.j=9;
 		monstersArray[2]=monsterPos2;
 	}
 	if(monstersNum>3){
-		board[15][0]=3;
 		var monsterPos3 = new Object();
 		monsterPos3.i=15;
 		monsterPos3.j=0;
 		monstersArray[3]=monsterPos3;
 	}
+	debugger;
 	console.log("finish monster");
 }
 
@@ -59,47 +56,110 @@ function drawMonsters(){
 		ctx.drawImage(img, center.x-24, center.y-24 , 50 , 50);
 	}
 }
-
+function isOnBoard(i,j){
+	if(i>=0 && i<16 && j>=0 && j<10){
+		return true;
+	}
+	return false;
+}
 function updatePositionToMonster()//need to add monster as argument or to do for all monstersArray
 	{
-		var posX=pos.i;
-		var posY=pos.j;
-		var monsterPosX=monsterPos.i;
-		var monsterPosY=monsterPos.j;
+		var posX=shape.i;
+		var posY=shape.j;
+		var monsterPosX;
+		var monsterPosY;
 
-		if(Math.abs(posX-monsterPosX)<Math.abs(posY-monsterPosY))
-		{//we are much close to the pacman in x
-			if(posX-monsterPosX>0)
-			{//pacman is right
-				if (monsterPosX < 13 && board[monsterPosX + 1][monsterPosY] != 4) {
-					monsterPosX++;
+		for(index=0;index<monstersArray.length;index++){
+			monsterPosX=monstersArray[index].i;
+			monsterPosY=monstersArray[index].j;
+			if(posX-monsterPosX>0){
+				if(isOnBoard(monsterPosX+1,monsterPosY) && board[monsterPosX+1][monsterPosY]!=4){//want move right
+					monstersArray[index].i++;
 				}
-				else if (monsterPosX > 0 && board[monsterPosX - 1][monsterPosY] != 4) {
-					monsterPosX--;
-				}
-				else if (monsterPosY > 0 && board[monsterPosX][monsterPosY+1] != 4) {
-					monsterPosY++;
-				}
-				else if (monsterPosY > 0 && board[monsterPosX][monsterPosY-1] != 4) {
-					monsterPosY--;
+				else{
+					if(posY-monsterPosY>0){
+						if(isOnBoard(monsterPosX,monsterPosY+1) && board[monsterPosX][monsterPosY+1]!=4){//want move down
+							monstersArray[index].j++;
+						}
+						else if(isOnBoard(monsterPosX,monsterPosY-1) && board[monsterPosX][monsterPosY-1]!=4){//want move up
+							monstersArray[index].j--;
+						}
+						else if(isOnBoard(monsterPosX-1,monsterPosY) && board[monsterPosX-1][monsterPosY]!=4){//want move left
+							monstersArray[index].i--;
+						}
+					}
+					else{
+						if(isOnBoard(monsterPosX,monsterPosY-1) && board[monsterPosX][monsterPosY-1]!=4){//want move up
+							monstersArray[index].j--;
+						}
+						else if(isOnBoard(monsterPosX,monsterPosY+1) && board[monsterPosX][monsterPosY+1]!=4){//want move down
+							monstersArray[index].j++;
+						}
+						else if(isOnBoard(monsterPosX-1,monsterPosY) && board[monsterPosX-1][monsterPosY]!=4){//want move left
+							monstersArray[index].i--;
+						}
+					}
 				}
 			}
-			else
-			{//pacman is down
-
+			else if(posX-monsterPosX<0){
+				if(isOnBoard(monsterPosX-1,monsterPosY) && board[monsterPosX-1][monsterPosY]!=4){//want move left
+					monstersArray[index].i--;
+				}
+				else{
+					if(posY-monsterPosY>0){
+						if(isOnBoard(monsterPosX,monsterPosY+1) && board[monsterPosX][monsterPosY+1]!=4){//want move down
+							monstersArray[index].j++;
+						}
+						else if(isOnBoard(monsterPosX,monsterPosY-1) && board[monsterPosX][monsterPosY-1]!=4){//want move up
+							monstersArray[index].j--;
+						}
+						else if(isOnBoard(monsterPosX+1,monsterPosY) && board[monsterPosX+1][monsterPosY]!=4){//want move right
+							monstersArray[index].i++;
+						}
+					}
+					else{
+						if(isOnBoard(monsterPosX,monsterPosY-1) && board[monsterPosX][monsterPosY-1]!=4){//want move up
+							monstersArray[index].j--;
+						}
+						else if(isOnBoard(monsterPosX,monsterPosY+1) && board[monsterPosX][monsterPosY+1]!=4){//want move down
+							monstersArray[index].j++;
+						}
+						else if(isOnBoard(monsterPosX+1,monsterPosY) && board[monsterPosX+1][monsterPosY]!=4){//want move right
+							monstersArray[index].i++;
+						}
+					}
+				}
 			}
+			else{
+				if(posY-monsterPosY>0){
+					if(isOnBoard(monsterPosX,monsterPosY+1) && board[monsterPosX][monsterPosY+1]!=4){//want move down
+						monstersArray[index].j++;
+					}
+					else if(isOnBoard(monsterPosX+1,monsterPosY) && board[monsterPosX+1][monsterPosY]!=4){//want move right
+						monstersArray[index].i++;
+					}
+					else if(isOnBoard(monsterPosX-1,monsterPosY) && board[monsterPosX-1][monsterPosY]!=4){//want move left
+						monstersArray[index].i--;
+					}
+					else if(isOnBoard(monsterPosX,monsterPosY-1) && board[monsterPosX][monsterPosY-1]!=4){//want move up
+						monstersArray[index].j--;
+					}
+				}
+				else{
+					if(isOnBoard(monsterPosX,monsterPosY-1) && board[monsterPosX][monsterPosY-1]!=4){//want move up
+						monstersArray[index].j--;
+					}
+					else if(isOnBoard(monsterPosX+1,monsterPosY) && board[monsterPosX+1][monsterPosY]!=4){//want move right
+						monstersArray[index].i++;
+					}
+					else if(isOnBoard(monsterPosX-1,monsterPosY) && board[monsterPosX-1][monsterPosY]!=4){//want move left
+						monstersArray[index].i--;
+					}
+					else if(isOnBoard(monsterPosX,monsterPosY+1) && board[monsterPosX][monsterPosY+1]!=4){//want move down
+						monstersArray[index].j++;
+					}
+				}
+			}
+
 		}
-		else if(Math.abs(posX-monsterPosX)>Math.abs(posY-monsterPosY))
-		{//we are much close to the pacman in y
-			if(posY-monsterPosY>0)
-			{//pacman is right
-
-			}
-			else
-			{//pacman is left
-
-			}
-		}
-		monsterPos.i=monsterPosX;
-		monsterPos.j=monsterPosY;
 }

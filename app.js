@@ -26,7 +26,7 @@ function Start(){
 	clockOnBoard=false;
 	scoreToWin=0;
 	Mysound = new sound("music.mp3");
-	Mysound.play();
+	//Mysound.play();
 	board = new Array();
 	score = 0;
 	lives=5;
@@ -64,6 +64,7 @@ function Start(){
 	interval2 = setInterval(getLives, 250);
 	interval3 =setInterval(setTime , 1000);
 	interval4=setInterval(putClockIcon,10000);
+	interval5=setInterval(updatePositionToMonster,2000);
 }
 
 function Draw(x) {
@@ -126,14 +127,6 @@ function Draw(x) {
 				  ctx.drawImage(img, center.x-24, center.y-24 , 50 , 50);
 				}
 			} 
-			/*
-			else if (board[i][j] == 3) {
-				var c = document.getElementById("canvas");
-  				var ctx = c.getContext("2d");
-				  var img = document.getElementById("monster");
-				  ctx.drawImage(img, center.x-24, center.y-24 , 50 , 50);
-			}
-			*/
 			else if (board[i][j] == 4) {
 				context.beginPath();
 				context.rect(center.x - 30, center.y - 30, 60, 60);
@@ -204,7 +197,7 @@ function UpdatePosition() {
 		//catch the clock
 	time=time+20;
 	}
-	if (board[shape.i][shape.j] == 3) {
+	if (pacmanMeetMonster()) {
 		if(lives==1)
 		{
 		window.clearInterval(interval);

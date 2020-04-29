@@ -25,6 +25,28 @@ form {
   #lbllives , #display{
     display: inline-block;
 }
+#username , #display3{
+  display: inline-block;
+}
+#lblScore , #display1{
+  display: inline-block;
+}
+#lblTime , #display2{
+  display: inline-block;
+}
+#newgame
+{
+  background: #030000;
+    color: rgb(255, 255, 255);
+    margin-top: 10px;
+    margin-bottom: 3px;
+    width: 15%;
+  
+    font-size: 15px;
+    height: 34px;
+    width: 190px;
+    
+}
   canvas {
 /* for put the canvas in the center
     padding-left: 100;

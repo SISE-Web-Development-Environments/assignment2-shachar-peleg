@@ -1,4 +1,4 @@
-
+var usernameForDisplay;
 	function login(){
 		const loginUser=document.getElementById("user");
 		const loginPassword=document.getElementById("password");
@@ -20,6 +20,7 @@ function checkIfPasswordCorrect(username,password) {
 	{
 		//var body = document.getElementsByTagName('body')[0];
 		//body.style.backgroundImage = 'url(back.jpg)';
+		usernameForDisplay=username;
 		return show('setting','login');
 		//debugger;
 

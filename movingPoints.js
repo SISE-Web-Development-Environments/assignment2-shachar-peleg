@@ -1,3 +1,4 @@
+
 function drawMovingPoints(){
     if(isOnBoard(m_points.i,m_points.j)){
         var center=new Object();
@@ -14,6 +15,8 @@ function generateMovingPoints(){
 	m_points.i=emptyCell[0];
 	m_points.j=emptyCell[1];
 }
+
+
 function randomMove(){
     if(!isOnBoard(m_points.i,m_points.j)){
         return false;
@@ -47,5 +50,76 @@ function randomMove(){
             }
         }
     }
-    pacmanMeetMoovingPoints();
+   // pacmanMeetMoovingPoints();
 }
+
+
+function updatePositionToMovingCandy()
+	{
+		var posX=m_points.i;
+		var posY=m_points.j;
+
+		var num=Math.random();
+
+		if(num<0.25)
+		{
+		if(isOnBoard(posX+1,posY) && board[posX+1][posY]!=4){//want move right
+			m_points.i++;
+		}
+		else if(isOnBoard(posX-1,posY) && board[posX-1][posY]!=4){//want move left
+			m_points.i--;
+		}
+		else if(isOnBoard(posX,posY+1) && board[posX][posY+1]!=4){//want move down
+			m_points.j++;
+		}
+		else if(isOnBoard(posX,posY-1) && board[posX][posY-1]!=4){//want move up;
+			m_points.j--;
+		}
+	}
+	else if(num>=0.25 && num<0.5)
+	{
+	 if(isOnBoard(posX,posY+1) && board[posX][posY+1]!=4){//want move down
+        m_points.j++;
+		}
+		else if(isOnBoard(posX,posY-1) && board[posX][posY-1]!=4){//want move up;
+			m_points.j--;
+		}
+		else if(isOnBoard(posX+1,posY) && board[posX+1][posY]!=4){//want move right
+			m_points.i++;
+		}
+		else if(isOnBoard(posX-1,posY) && board[posX-1][posY]!=4){//want move left
+			m_points.i--;
+		}
+	}
+	else if(num>=0.5 && num<0.75)
+	{
+		if(isOnBoard(posX,posY-1) && board[posX][posY-1]!=4){//want move up;
+			m_points.j--;
+		}
+		else if(isOnBoard(posX,posY+1) && board[posX][posY+1]!=4){//want move down
+			m_points.j++;
+		}
+		else if(isOnBoard(posX+1,posY) && board[posX+1][posY]!=4){//want move right
+			m_points.i++;
+		}
+		else if(isOnBoard(posX-1,posY) && board[posX-1][posY]!=4){//want move left
+			m_points.i--;
+		}
+	}
+	else if(num>=0.75 && num<1)
+	{
+		if(isOnBoard(posX-1,posY) && board[posX-1][posY]!=4){//want move left
+			m_points.i--;
+		}
+		else if(isOnBoard(posX,posY-1) && board[posX][posY-1]!=4){//want move u;
+			m_points.j--;
+		}
+		else if(isOnBoard(posX+1,posY) && board[posX+1][posY]!=4){//want move right
+			m_points.i++;
+		}
+		else if(isOnBoard(posX,posY+1) && board[posX][posY+1]!=4){//want move down
+			m_points.j++;
+		}
+	}
+	}
+	

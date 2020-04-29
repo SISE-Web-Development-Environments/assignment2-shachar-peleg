@@ -5,6 +5,7 @@ var board;
 var score;
 var pac_color;
 var start_time;
+var currTime;
 var time_elapsed;
 var interval;
 var interval2;
@@ -23,11 +24,57 @@ $(document).ready(function() {
 	//Start();
 });
 
+function StartNewGame()
+{
+	boardToZero();
+	Mysound.stop();
+	window.alert("new game");	
+	stopIntervals();
+
+	/*
+	removeEventListener("keydown",function(e) {
+		keysDown[e.keyCode] = true;
+	},false
+);
+removeEventListener("keyup",function(e) {
+	keysDown[e.keyCode] = false;
+},false
+);*/
+
+	Start();
+
+}
+
+function stopIntervals()
+{
+	Mysound.stop();
+	window.clearInterval(interval);
+	window.clearInterval(interval2);
+	window.clearInterval(interval3);
+	window.clearInterval(interval4);
+	window.clearInterval(interval5);
+	window.clearInterval(interval6);
+	window.clearInterval(interval7);
+	window.clearInterval(interval8);
+	window.clearInterval(interval9);
+}
+
+function boardToZero()
+{
+	for (var i = 0; i < 16; i++) {
+		board[i] = new Array();
+		for(var j = 0;j<10;j++){
+			board[i][j]=0;
+		}
+	}
+}
 function Start(){
+	getUserName();
 	clockOnBoard=false;
+	powerOnBoard=false;
 	scoreToWin=0;
 	Mysound = new sound("music.mp3");
-	//Mysound.play();
+	Mysound.play();
 	board = new Array();
 	score = 0;
 	lives=5;
@@ -35,7 +82,7 @@ function Start(){
 	var cnt = 160;
 	var pacman_remain = 1;
 	monsters_remain=howManyMonster();
-	start_time = time;
+	currTime = time;
 	for (var i = 0; i < 16; i++) {
 		board[i] = new Array();
 		for(var j = 0;j<10;j++){
@@ -58,22 +105,34 @@ function Start(){
 			keysDown[e.keyCode] = true;
 		},false
 	);
+
 	addEventListener("keyup",function(e) {
 			keysDown[e.keyCode] = false;
 		},false
 	);
 	interval = setInterval(UpdatePosition, 250);
 	interval2 = setInterval(getLives, 250);
+	interval7 = setInterval(getScore, 250);
+	interval8 = setInterval(getTime, 250);
 	interval3 =setInterval(setTime , 1000);
 	interval4=setInterval(putClockIcon,10000);
+	interval4=setInterval(putPowerIcon,20000);
 	interval5=setInterval(updatePositionToMonster,1500);
-	interval6=setInterval(randomMove,500);
+	interval6=setInterval(updatePositionToMovingCandy,1500);
+	interval9=setInterval(startMusic, 42000);
+}
+
+function startMusic()
+{
+	console.log("music");
+	Mysound = new sound("music.mp3");
+	 Mysound.play();
 }
 
 function Draw(x) {
 	canvas.width = canvas.width; //clean board
-	lblScore.value = score;
-	lblTime.value=time;
+//	lblScore.value = score;
+//	lblTime.value=currTime;
 	for (var i = 0; i < 16; i++) {
 		for (var j = 0; j < 10; j++) {
 			var center = new Object();
@@ -174,6 +233,12 @@ function Draw(x) {
 					var img = document.getElementById("clock");
 					ctx.drawImage(img, center.x-24, center.y-24 , 50 , 50);
 				}
+				else if (board[i][j] == 10) {
+					var c = document.getElementById("canvas");
+						var ctx = c.getContext("2d");
+						var img = document.getElementById("power");
+						ctx.drawImage(img, center.x-24, center.y-24 , 50 , 50);
+					}
 		}
 	}
 	drawMonsters();
@@ -199,7 +264,11 @@ function UpdatePosition() {
 	}
 	if (board[shape.i][shape.j] == 8) {
 		//catch the clock
-	time=time+20;
+		currTime=currTime+20;
+	}
+	if (board[shape.i][shape.j] == 10) {
+		//catch the clock
+		lives=lives+1;
 	}
 	if (pacmanMeetMonster()) {
 		lives--;
@@ -209,11 +278,11 @@ function UpdatePosition() {
 				score=0;
 			}
 			
-		if(lives==0)
+		if(lives<=0)
 		{
-		window.clearInterval(interval);
+		finishGame(false);
+		stopIntervals();
 		Mysound.stop();
-		window.alert("You Lose");	
 		}
 		else
 		{
@@ -240,6 +309,27 @@ function UpdatePosition() {
 	}
 }
 
+function finishGame(bool)
+{//bool ==true it mean it come from end time
+	//bool = false it mean it come from end lives
+
+	if(bool==true)
+	{
+		if(score<100)
+		{
+			str="You are better than "+score+" points!";
+			alert(str);
+		}
+		else
+		{
+			alert("Winner!!!");
+		}
+	}
+	else
+	{
+		alert("Loser!");
+	}
+}
 function putClockIcon()
 {
 	console.log("clockIcon");
@@ -259,18 +349,38 @@ function putClockIcon()
 		clockOnBoard=false;
 	}
 }
+function putPowerIcon()
+{
+	console.log("clockIcon");
+	if(clockOnBoard==false)//need to put the clock on board
+	{
+	var emptyCell;
+	emptyCell = findRandomEmptyCell(board);
+	clockPos=emptyCell;
+	board[emptyCell[0]][emptyCell[1]] = 10;//represent power
+	clockOnBoard=true;
+	}
+	else //need to remove the clock from the board
+	{
+		console.log("delete clockicon")
+		board[clockPos[0]][clockPos[1]] = 0;//represent clock
+		clockOnBoard=false;
+	}
+}
+
 function setTime()
 {
 	//lblTime=time;
-	time=time-1;
-	if(time<=0)
+	currTime=currTime-1;
+	if(currTime<=0)
 	{
-		window.clearInterval(interval);
-		window.clearInterval(interval3);
+		finishGame(true);
+		stopIntervals();
 		Mysound.stop;
-		window.alert("finish time");
+		//window.alert("finish time");
 	}
 }
+
 function isAWall(i,j){
 	if(board[i][j]==4){
 		return true;
@@ -429,6 +539,19 @@ function sound(src) {
   function getLives()
   {
 	document.getElementById("display").innerHTML = lives;
+}
 
-	//document.getElementById("lives").innerHTML = lives;
+function getUserName()
+{
+  document.getElementById("display3").innerHTML = usernameForDisplay;
+}
+
+function getScore()
+  {
+	document.getElementById("display1").innerHTML = score;
+}
+
+function getTime()
+  {
+	document.getElementById("display2").innerHTML = currTime;
 }

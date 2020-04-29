@@ -219,7 +219,7 @@
 				<p>
 				<label for="5Points">which for 5 points:</label>
 
-				<INPUT TYPE="radio" Name="5Points" ID="5Points1" Value="img1">  
+				<INPUT TYPE="radio" Name="5Points" ID="5Points1" Value="img1" checked="checked">  
 					  <img id="img1" class="img1" src="4.png" alt="some img">
 
 				<INPUT TYPE="radio" Name="5Points" ID="5Points2" Value="img2">
@@ -230,7 +230,7 @@
 
 				<label for="15Points">which for 15 points:</label>
 				
-				<INPUT TYPE="radio" Name="15Points" ID="15Points1" Value="img1">  
+				<INPUT TYPE="radio" Name="15Points" ID="15Points1" Value="img1" checked="checked">  
 					  <img id="img1" class="img1" src="jelly1.png" alt="some img">
 
 				<INPUT TYPE="radio" Name="15Points" ID="15Points2" Value="img2">
@@ -240,7 +240,7 @@
 
 				<label for="25Points">which for 25 points:</label>
 				
-				<INPUT TYPE="radio" Name="25Points" ID="25Points1" Value="img1">  
+				<INPUT TYPE="radio" Name="25Points" ID="25Points1" Value="img1" checked="checked">  
 					  <img id="img1" class="img1" src="monster2.png" alt="some img">
 
 				<INPUT TYPE="radio" Name="25Points" ID="25Points2" Value="img2">
@@ -271,7 +271,7 @@
 				<img id="img7" class="img7" src="monster.png" alt="some img">
 			</br>
 
-			<INPUT TYPE="radio" Name="monster" ID="3monster" Value="img2">
+			<INPUT TYPE="radio" Name="monster" ID="3monster" Value="img2" checked="checked">
 				<img id="img7" class="img7" src="monster.png" alt="some img">
 				<img id="img7" class="img7" src="monster.png" alt="some img">
 				<img id="img7" class="img7" src="monster.png" alt="some img">
@@ -319,7 +319,7 @@
 
 
 	<div class="game" id="game" style="display:none">
-		<div id="score">
+		<!--<div id="score">
 			<label for="lblScore">SCORE:</label>
 			<input id="lblScore" type="text" />
 		</div>
@@ -327,6 +327,15 @@
 			<label for="lblTime">TIME:</label>
 			<input id="lblTime" type="text" />
 		</div>
+	-->
+
+	<label for="username" class="username">USER NAME:<div id="display3"></div></label>
+</br>
+
+		<label for="lblScore" class="lblScore">SCORE:<div id="display1"></div></label>
+</br>
+		<label for="lblTime" class="lblTime">TIME:<div id="display2"></div></label>
+	</br>
 
 		<label for="lbllives" class="lives">LIVES:<div id="display"></div></label>
 		
@@ -349,8 +358,11 @@
 			<img id="plankton2" src="plankton1.png" width="50" height="50" hidden/>
 			<img id="gerri" src="gerri1.png" width="50" height="50" hidden/>
 			<img id="clock" src="clock1.png" width="50" height="50" hidden/>
+			<img id="power" src="power.png" width="50" height="50" hidden/>
 
 		</div>
+
+		<button id="newgame" onclick="return StartNewGame()">Start New Game</button>
 	</div>
 
 <script> 

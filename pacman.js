@@ -1,5 +1,12 @@
 
-
+function pacmanMeetMoovingPoints(){
+	if(shape.i==m_points.i && shape.j==m_points.j){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
 
 function pacmanMeetMonster(){
 	for(index=0; index<monstersArray.length;index++){

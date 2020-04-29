@@ -57,12 +57,24 @@ function drawMonsters(){
 		ctx.drawImage(img, center.x-24, center.y-24 , 50 , 50);
 	}
 }
+
 function isOnBoard(i,j){
 	if(i>=0 && i<16 && j>=0 && j<10){
 		return true;
 	}
 	return false;
 }
+
+function MonsterMeetFood(i,j)
+{
+	for(index=0; index<monstersArray.length;index++){
+		if(i==monstersArray[index].i && j==monstersArray[index].j){
+			return true;
+		}
+	}
+	return false;
+}
+
 function updatePositionToMonster()//need to add monster as argument or to do for all monstersArray
 	{
 		var posX=shape.i;
@@ -74,58 +86,58 @@ function updatePositionToMonster()//need to add monster as argument or to do for
 			monsterPosX=monstersArray[index].i;
 			monsterPosY=monstersArray[index].j;
 			if(posX-monsterPosX>0){
-				if(isOnBoard(monsterPosX+1,monsterPosY) && board[monsterPosX+1][monsterPosY]!=4){//want move right
+				if(isOnBoard(monsterPosX+1,monsterPosY) && !isAWall(monsterPosX+1,monsterPosY)){//want move right
 					monstersArray[index].i++;
 				}
 				else{
 					if(posY-monsterPosY>0){
-						if(isOnBoard(monsterPosX,monsterPosY+1) && board[monsterPosX][monsterPosY+1]!=4){//want move down
+						if(isOnBoard(monsterPosX,monsterPosY+1) && !isAWall(monsterPosX,monsterPosY+1)){//want move down
 							monstersArray[index].j++;
 						}
-						else if(isOnBoard(monsterPosX,monsterPosY-1) && board[monsterPosX][monsterPosY-1]!=4){//want move up
+						else if(isOnBoard(monsterPosX,monsterPosY-1) && !isAWall(monsterPosX,monsterPosY-1)){//want move up
 							monstersArray[index].j--;
 						}
-						else if(isOnBoard(monsterPosX-1,monsterPosY) && board[monsterPosX-1][monsterPosY]!=4){//want move left
+						else if(isOnBoard(monsterPosX-1,monsterPosY) && !isAWall(monsterPosX-1,monsterPosY)){//want move left
 							monstersArray[index].i--;
 						}
 					}
 					else{
-						if(isOnBoard(monsterPosX,monsterPosY-1) && board[monsterPosX][monsterPosY-1]!=4){//want move up
+						if(isOnBoard(monsterPosX,monsterPosY-1) && !isAWall(monsterPosX,monsterPosY-1)){//want move up
 							monstersArray[index].j--;
 						}
-						else if(isOnBoard(monsterPosX,monsterPosY+1) && board[monsterPosX][monsterPosY+1]!=4){//want move down
+						else if(isOnBoard(monsterPosX,monsterPosY+1) && !isAWall(monsterPosX,monsterPosY+1)){//want move down
 							monstersArray[index].j++;
 						}
-						else if(isOnBoard(monsterPosX-1,monsterPosY) && board[monsterPosX-1][monsterPosY]!=4){//want move left
+						else if(isOnBoard(monsterPosX-1,monsterPosY) && !isAWall(monsterPosX-1,monsterPosY)){//want move left
 							monstersArray[index].i--;
 						}
 					}
 				}
 			}
 			else if(posX-monsterPosX<0){
-				if(isOnBoard(monsterPosX-1,monsterPosY) && board[monsterPosX-1][monsterPosY]!=4){//want move left
+				if(isOnBoard(monsterPosX-1,monsterPosY) && !isAWall(monsterPosX-1,monsterPosY)){//want move left
 					monstersArray[index].i--;
 				}
 				else{
 					if(posY-monsterPosY>0){
-						if(isOnBoard(monsterPosX,monsterPosY+1) && board[monsterPosX][monsterPosY+1]!=4){//want move down
+						if(isOnBoard(monsterPosX,monsterPosY+1) && !isAWall(monsterPosX,monsterPosY+1)){//want move down
 							monstersArray[index].j++;
 						}
-						else if(isOnBoard(monsterPosX,monsterPosY-1) && board[monsterPosX][monsterPosY-1]!=4){//want move up
+						else if(isOnBoard(monsterPosX,monsterPosY-1) && !isAWall(monsterPosX,monsterPosY-1)){//want move up
 							monstersArray[index].j--;
 						}
-						else if(isOnBoard(monsterPosX+1,monsterPosY) && board[monsterPosX+1][monsterPosY]!=4){//want move right
+						else if(isOnBoard(monsterPosX+1,monsterPosY) && !isAWall(monsterPosX+1,monsterPosY)){//want move right
 							monstersArray[index].i++;
 						}
 					}
 					else{
-						if(isOnBoard(monsterPosX,monsterPosY-1) && board[monsterPosX][monsterPosY-1]!=4){//want move up
+						if(isOnBoard(monsterPosX,monsterPosY-1) && !isAWall(monsterPosX,monsterPosY-1)){//want move up
 							monstersArray[index].j--;
 						}
-						else if(isOnBoard(monsterPosX,monsterPosY+1) && board[monsterPosX][monsterPosY+1]!=4){//want move down
+						else if(isOnBoard(monsterPosX,monsterPosY+1) && !isAWall(monsterPosX,monsterPosY+1)){//want move down
 							monstersArray[index].j++;
 						}
-						else if(isOnBoard(monsterPosX+1,monsterPosY) && board[monsterPosX+1][monsterPosY]!=4){//want move right
+						else if(isOnBoard(monsterPosX+1,monsterPosY) && !isAWall(monsterPosX+1,monsterPosY)){//want move right
 							monstersArray[index].i++;
 						}
 					}
@@ -133,30 +145,30 @@ function updatePositionToMonster()//need to add monster as argument or to do for
 			}
 			else{
 				if(posY-monsterPosY>0){
-					if(isOnBoard(monsterPosX,monsterPosY+1) && board[monsterPosX][monsterPosY+1]!=4){//want move down
+					if(isOnBoard(monsterPosX,monsterPosY+1) && !isAWall(monsterPosX,monsterPosY+1)){//want move down
 						monstersArray[index].j++;
 					}
-					else if(isOnBoard(monsterPosX+1,monsterPosY) && board[monsterPosX+1][monsterPosY]!=4){//want move right
+					else if(isOnBoard(monsterPosX+1,monsterPosY) && !isAWall(monsterPosX+1,monsterPosY)){//want move right
 						monstersArray[index].i++;
 					}
-					else if(isOnBoard(monsterPosX-1,monsterPosY) && board[monsterPosX-1][monsterPosY]!=4){//want move left
+					else if(isOnBoard(monsterPosX-1,monsterPosY) && !isAWall(monsterPosX-1,monsterPosY)){//want move left
 						monstersArray[index].i--;
 					}
-					else if(isOnBoard(monsterPosX,monsterPosY-1) && board[monsterPosX][monsterPosY-1]!=4){//want move up
+					else if(isOnBoard(monsterPosX,monsterPosY-1) && !isAWall(monsterPosX,monsterPosY-1)){//want move up
 						monstersArray[index].j--;
 					}
 				}
 				else{
-					if(isOnBoard(monsterPosX,monsterPosY-1) && board[monsterPosX][monsterPosY-1]!=4){//want move up
+					if(isOnBoard(monsterPosX,monsterPosY-1) && !isAWall(monsterPosX,monsterPosY-1)){//want move up
 						monstersArray[index].j--;
 					}
-					else if(isOnBoard(monsterPosX+1,monsterPosY) && board[monsterPosX+1][monsterPosY]!=4){//want move right
+					else if(isOnBoard(monsterPosX+1,monsterPosY) && !isAWall(monsterPosX+1,monsterPosY)){//want move right
 						monstersArray[index].i++;
 					}
-					else if(isOnBoard(monsterPosX-1,monsterPosY) && board[monsterPosX-1][monsterPosY]!=4){//want move left
+					else if(isOnBoard(monsterPosX-1,monsterPosY) && !isAWall(monsterPosX-1,monsterPosY)){//want move left
 						monstersArray[index].i--;
 					}
-					else if(isOnBoard(monsterPosX,monsterPosY+1) && board[monsterPosX][monsterPosY+1]!=4){//want move down
+					else if(isOnBoard(monsterPosX,monsterPosY+1) && !isAWall(monsterPosX,monsterPosY+1)){//want move down
 						monstersArray[index].j++;
 					}
 				}

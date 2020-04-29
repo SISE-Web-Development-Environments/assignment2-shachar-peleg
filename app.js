@@ -1,5 +1,6 @@
 var context;
 var shape = new Object();
+var m_points=new Object();
 var board;
 var score;
 var pac_color;
@@ -46,6 +47,7 @@ function Start(){
 	generateMonsters(monsters_remain, monstersArray);
 	generatePacman();
 	console.log("3");
+	generateMovingPoints();
 	generateFood();
 	console.log("4");
 	keysDown = {};
@@ -64,7 +66,8 @@ function Start(){
 	interval2 = setInterval(getLives, 250);
 	interval3 =setInterval(setTime , 1000);
 	interval4=setInterval(putClockIcon,10000);
-	interval5=setInterval(updatePositionToMonster,2000);
+	interval5=setInterval(updatePositionToMonster,1500);
+	interval6=setInterval(randomMove,500);
 }
 
 function Draw(x) {
@@ -174,16 +177,7 @@ function Draw(x) {
 		}
 	}
 	drawMonsters();
-}
-
-function MonsterMeetFood(i,j)
-{
-	for(index=0; index<monstersArray.length;index++){
-		if(i==monstersArray[index].i && j==monstersArray[index].j){
-			return true;
-		}
-	}
-	return false;
+	drawMovingPoints();
 }
 
 function UpdatePosition() {
@@ -224,7 +218,14 @@ function UpdatePosition() {
 		else
 		{
 			generatePacman();
+			generateMonsters(monsters_remain, monstersArray);
 		}
+	}
+	else if(pacmanMeetMoovingPoints()){
+		board[shape.i][shape.j] = 2;
+		m_points.i=-1;
+        m_points.j=-1;
+        score=score+50;
 	}
 	else{
 		board[shape.i][shape.j] = 2;
@@ -268,6 +269,14 @@ function setTime()
 		window.clearInterval(interval3);
 		Mysound.stop;
 		window.alert("finish time");
+	}
+}
+function isAWall(i,j){
+	if(board[i][j]==4){
+		return true;
+	}
+	else{
+		return false;
 	}
 }
 

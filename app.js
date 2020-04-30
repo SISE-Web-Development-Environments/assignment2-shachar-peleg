@@ -283,6 +283,7 @@ function UpdatePosition() {
 			
 		if(lives<=0)
 		{
+   	    getLives()
 		finishGame(false);
 		stopIntervals();
 		Mysound.stop();

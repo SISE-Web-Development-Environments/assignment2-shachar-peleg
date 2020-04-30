@@ -4,6 +4,14 @@ p{
 a { 
     text-decoration: none; 
 }
+
+footer
+{
+  background-color: #333;
+  color: rgb(255, 255, 255);
+
+}
+
 .navigation {
     background-color: #333;
     font-size: 20px;
@@ -41,8 +49,6 @@ form {
 {
   background: #030000;
     color: rgb(255, 255, 255);
-    margin-top: 10px;
-    margin-bottom: 3px;
     width: 15%;
   
     font-size: 15px;
@@ -50,11 +56,22 @@ form {
     width: 190px;
     
 }
-#showSetting{
-  border: 1px solid rgb(0, 0, 0);
-  margin: auto;
+#gamecanvas , #showSetting
+{
+  display: inline-block;
+  vertical-align: middle;
 
 }
+#gamecanvas
+{
+  height: 500px;
+}
+#showSetting{
+  border: 1px solid rgb(0, 0, 0);
+width: 150px;
+height: 500px;
+}
+
   canvas {
 /* for put the canvas in the center
     padding-left: 100;
@@ -63,8 +80,8 @@ form {
     margin-right: auto;
     display: block;
 */
-    
     width: 730px;
+    height: 500px;
     border:1px solid #000000;
 }
   
@@ -139,18 +156,33 @@ form {
   }
   
   /* The Close Button */
-  .close {
-    color: #aaa;
-    float: right;
+  .close  {
+    color: rgb(14, 3, 3);
+    float: left;
     padding-right: 100;
-    font-size: 28px;
+    font-size: 40px;
     font-weight: bold;
   }
- 
+  .close1, .close2 , .close3{
+    top: 8px;
+    left: 8px;
+    position: absolute;
+    color: rgb(14, 3, 3);
+    float: left;
+      padding-right: 100;
+    font-size: 40px;
+    font-weight: bold;
+}
   
   .close:hover,
   .close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
+    font-size: 40px;
   }
+
+  #fivePoints1setting , #fivePoints2setting ,#twentyfivePoints1setting , #twentyfivePoints2setting, #fifteenPoints1setting , #fifteenPoints2setting
+  { 
+    visibility: hidden; 
+    }

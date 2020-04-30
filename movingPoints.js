@@ -54,6 +54,7 @@ function randomMove(){
 }
 
 
+
 function updatePositionToMovingCandy()
 	{
 		var posX=m_points.i;

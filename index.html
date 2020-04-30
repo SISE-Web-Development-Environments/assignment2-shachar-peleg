@@ -318,72 +318,111 @@
 	</div>
 
 
-	<div class="game" id="game" style="display:none">
-		<!--<div id="score">
-			<label for="lblScore">SCORE:</label>
-			<input id="lblScore" type="text" />
-		</div>
-		<div id="time">
-			<label for="lblTime">TIME:</label>
-			<input id="lblTime" type="text" />
-		</div>
-	-->
+	<div class="game" id="game" name="gameDiv" style="display:none">
 
-	<label for="username" class="username"><strong>NAME:</strong> <div id="display3"></div></label>&nbsp&nbsp
-	<label for="lblScore" class="lblScore"><strong>SCORE:</strong><div id="display1"></div></label>&nbsp&nbsp
-	<label for="lblTime" class="lblTime"><strong>TIME:</strong><div id="display2"></div></label>&nbsp&nbsp
-	<label for="lbllives" class="lives"><strong>LIVES:</strong><div id="display"></div></label>
-		
-	
+		<label for="username" class="username"><strong>NAME:</strong> <div id="display3"></div></label>&nbsp&nbsp
+		<label for="lblScore" class="lblScore"><strong>SCORE:</strong><div id="display1"></div></label>&nbsp&nbsp
+		<label for="lblTime" class="lblTime"><strong>TIME:</strong><div id="display2"></div></label>&nbsp&nbsp
+		<label for="lbllives" class="lives"><strong>LIVES:</strong><div id="display"></div></label>
+	</br>
 
-		<div id="game">
+	<table>
+		<div id="gamecanvas">
 			<canvas id="canvas" height="600" width="960"></canvas>
-			<img id="burger" src="4.png" width="50" height="50" hidden/>
-			<img id="pacmanright" src="right.png" width="50" height="50" hidden/>
-			<img id="pacmanleft" src="left.png" width="50" height="50" hidden/>
-			<img id="pacmanup" src="up.png" width="50" height="50" hidden/>
-			<img id="pacmandown" src="down.png" width="50" height="50" hidden/>
-			<img id="monster" src="monster.png" width="50" height="50" hidden/>
-			<img id="monster2" src="monster2.png" width="50" height="50" hidden/>
-			<img id="monster3" src="monster3.png" width="50" height="50" hidden/>
-			<img id="pineapple" src="pineapple.png" width="50" height="50" hidden/>
-			<img id="jelly1" src="jelly1.png" width="50" height="50" hidden/>
-			<img id="jelly2" src="jelly2.png" width="50" height="50" hidden/>
-			<img id="plankton1" src="monster2.png" width="50" height="50" hidden/>
-			<img id="plankton2" src="plankton1.png" width="50" height="50" hidden/>
-			<img id="gerri" src="gerri1.png" width="50" height="50" hidden/>
-			<img id="clock" src="clock1.png" width="50" height="50" hidden/>
-			<img id="power" src="power.png" width="50" height="50" hidden/>
-
 		</div>
-		<div id="showSetting">
-			power :
-			<img id="powersetting" src="power.png" width="50" height="50" />
-			clock:
+
+		<div id="showSetting" name="showSetting">
+	
+		<strong>clock:</strong>
 			<img id="clocksetting" src="clock1.png" width="50" height="50" />
-			moving candy for 50 points :
+		</br>
+
+		<strong>moving candy for 50 points :</strong>
 			<img id="gerrisetting" src="gerri1.png" width="50" height="50"/>
-			5 points candy:
-			15 points candy:
-			25 points candy:
-			monster:
-			<img id="monster" src="monster.png" width="50" height="50" hidden/>
+		</br>
 
+		<strong>power :</strong>
+		<img id="powersetting" src="power.png" width="50" height="50" />
+	</br>
 
+		<strong>	monster:</strong>
+			<img id="monster" src="monster.png" width="50" height="50" />
+		</br>
+		<strong>5 points candy:</strong>
+			<img id="fivePoints1setting" src="4.png" width="50" height="50" />
+			<img id="fivePoints2setting" src="pineapple.png" width="50" height="50" />
+		</br>
+
+		<strong>15 points candy:</strong>
+			<img id="fifteenPoints1setting" src="jelly1.png" width="50" height="50" />
+			<img id="fifteenPoints2setting" src="jelly2.png" width="50" height="50" />
+		</br>
+
+		<strong>25 points candy:</strong>
+			<img id="twentyfivePoints1setting" src="monster2.png" width="50" height="50" />
+			<img id="twentyfivePoints2setting" src="plankton1.png" width="50" height="50" />
+		
 		</div>
+
+		</table>
+	</br>
 		<button id="newgame" onclick="return StartNewGame()">Start New Game</button>
+
+		<img id="burger" src="4.png" width="0" height="0" hidden/>
+		<img id="pacmanright" src="right.png" width="0" height="0" hidden/>
+		<img id="pacmanleft" src="left.png" width="0" height="0" hidden/>
+		<img id="pacmanup" src="up.png" width="0" height="0" hidden/>
+		<img id="pacmandown" src="down.png" width="0" height="0" hidden/>
+		<img id="monster" src="monster.png" width="0" height="0" hidden/>
+		<img id="monster2" src="monster2.png" width="0" height="0" hidden/>
+		<img id="monster3" src="monster3.png" width="0" height="0" hidden/>
+		<img id="pineapple" src="pineapple.png" width="0" height="0" hidden/>
+		<img id="jelly1" src="jelly1.png" width="0" height="0" hidden/>
+		<img id="jelly2" src="jelly2.png" width="0" height="0" hidden/>
+		<img id="plankton1" src="monster2.png" width="0" height="0" hidden/>
+		<img id="plankton2" src="plankton1.png" width="0" height="0" hidden/>
+		<img id="gerri" src="gerri1.png" width="0" height="0" hidden/>
+		<img id="clock" src="clock1.png" width="0" height="0" hidden/>
+		<img id="power" src="power.png" width="0" height="0" hidden/>
 	</div>
+
+	<!--------
+	<footer>
+		<p>Posted by: Hege Refsnes</p>
+		<p>Contact information: <a href="mailto:someone@example.com">
+		someone@example.com</a>.</p>
+	  </footer>
+	  --->
+
 
 	<!---------the div for lose win -------->
 	<div id="lostLives" class="modal">
-		<div class="modal-content">
+		<div class="modal-content1">
 		  <span class="close1">&times;</span>
 		  <style>  
-		  #lostLives{
+		  #lostLives {
+ 		 position: relative;
+  		 text-align: center;
+ 		 color: rgb(15, 6, 6);
+		 }
+		  h2{
+		  color: rgb(15, 6, 6);
+ 		  position: absolute;
+		  bottom: 8px;
+		  left: 8px;
+		  font-size: 18px;
+		}
+		  #lostLives , .modal-content1{
 			text-align: center;
+			position: absolute;
+  			float: left;
+ 		    left: 50%;
+			top: 50%;
+ 			transform: translate(-50%, -50%);
 		  }
+		
 		</style>
-		<strong>Loser!!!</strong>	
+		<h2>Loser!!!</h2>	
 		</br>
 		  <img id="loser" src="loser.gif" width="350" height="200" />
 	</div>
@@ -395,17 +434,41 @@
 	span.onclick = function() {
 		$("#lostLives").hide();
 	}
+	window.onclick = function(event) {
+	  if (event.target == modal ) {
+		$("#lostLives").hide();
+	  }
+	}
 </script>
 
+
+
 <div id="lostScore" class="modal">
-	<div class="modal-content">
+	<div class="modal-content2">
 	  <span class="close2">&times;</span>
 	  <style>  
 	  #lostScore{
-		text-align: center;
+		position: relative;
+  		 text-align: center;
+ 		 color: rgb(15, 6, 6);
 	  }
+	  h3{
+		  color: rgb(15, 6, 6);
+ 		  position: absolute;
+		  bottom: 8px;
+		  left: 8px;
+		  font-size: 14px;
+		}
+		#lostScore , .modal-content2{
+			text-align: center;
+			position: absolute;
+  			float: left;
+ 		    left: 50%;
+			top: 50%;
+ 			transform: translate(-50%, -50%);
+		  }
 	</style>
-	<label for="losePoint" class="losePoint">YOU ARE BETTER THAN &nbsp<div id="display4"></div> &nbsp POINTS !!!</label>	
+	<h3 for="losePoint" class="losePoint">YOU ARE BETTER THAN &nbsp<div id="display4"></div> &nbsp POINTS !!!</h3>	
 	</br>
 	  <img id="loser" src="loser.gif" width="350" height="200" />
 </div>
@@ -420,14 +483,31 @@ span.onclick = function() {
 </script>
 
 <div id="win" class="modal">
-	<div class="modal-content">
+	<div class="modal-content3">
 	  <span class="close3">&times;</span>
 	  <style>  
 	  #win{
-		text-align: center;
+		position: relative;
+  		 text-align: center;
+		  color: rgb(15, 6, 6);
 	  }
+	  h4{
+		  color: rgb(15, 6, 6);
+ 		  position: absolute;
+		  bottom: 8px;
+		  left: 8px;
+		  font-size: 18px;
+		}
+		#win , .modal-content3{
+			text-align: center;
+			position: absolute;
+  			float: left;
+ 		    left: 50%;
+			top: 50%;
+ 			transform: translate(-50%, -50%);
+		  }
 	</style>
-	<strong>WINNER!!!</strong>	
+	<h4>WINNER!!!</h4>	
 	</br>
 	  <img id="winner" src="winner.gif" width="350" height="200" />
 </div>

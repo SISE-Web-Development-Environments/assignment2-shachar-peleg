@@ -16,6 +16,68 @@ var monster3;
 var monster4;
 var time;
 
+function show_imageFivePoints() {
+	if(fivepoint1)
+	{
+    var img = document.getElementById('fivePoints1setting');
+	img.style.visibility = 'visible';
+	}
+	else
+	{
+		var img = document.getElementById('fivePoints2setting');
+		img.style.visibility = 'visible';
+	}
+}
+
+function show_imageFifteenPoints() {
+	if(fifteenPoint1)
+	{
+    var img = document.getElementById('fifteenPoints1setting');
+	img.style.visibility = 'visible';
+	}
+	else
+	{
+		var img = document.getElementById('fifteenPoints2setting');
+		img.style.visibility = 'visible';
+	}
+}
+
+
+function show_imagetwentyFivePoints() {
+	if(twentyfivepoint1)
+	{
+    var img = document.getElementById('twentyfivePoints1setting');
+	img.style.visibility = 'visible';
+	}
+	else
+	{
+		var img = document.getElementById('twentyfivePoints2setting');
+		img.style.visibility = 'visible';
+	}
+}
+/*
+function show_imageFivePoints()
+{
+	console.log("show burger");
+	if(fivepoint1)
+	{
+	var img = document.createElement("img");
+    img.src = "4.png";
+    img.width = 50;
+	img.height = 50;
+	document.fivepoint.appendChild(img);
+	}
+  else
+  {
+	var img = document.createElement("img");
+    img.src = "pineapple.png";
+    img.width = 50;
+	img.height = 50;
+	document.fivepoint.appendChild(img);
+  }
+
+*/
+
 function setKeyboardControlKey(event , way)
 {
 if(way == 'Up')
@@ -52,6 +114,9 @@ function GetSetting()
 	time = document.getElementById("time").value;
 
 	Start();
+	show_imageFivePoints();
+	show_imageFifteenPoints();
+	show_imagetwentyFivePoints();
 	return show('game' , 'setting');
 
 }
@@ -138,5 +203,8 @@ function randomSetting()
 
 	 console.log("setting");
 	 Start();
+	 show_imageFivePoints();
+	 show_imageFifteenPoints();
+	show_imagetwentyFivePoints();
 	return show('game' , 'setting');
 }

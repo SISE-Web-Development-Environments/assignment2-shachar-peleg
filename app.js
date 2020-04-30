@@ -68,6 +68,9 @@ function boardToZero()
 		}
 	}
 }
+
+
+
 function Start(){
 	getUserName();
 	clockOnBoard=false;
@@ -567,3 +570,4 @@ function getScoreForLose()
   {
 	document.getElementById("display4").innerHTML = score;
 }
+

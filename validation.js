@@ -4,12 +4,13 @@ $(function(){
 		rules: {
 			firstName:
 				{
-					required: true
+					required: true,
+					lettersonly: true
 				},
 				lastName:
 				{
-					required: true
-					
+					required: true,
+					lettersonly: true
 				},
 				userName:
 				{
@@ -18,6 +19,7 @@ $(function(){
 				},
 				registerPassword: {
 				required: true,
+				alphanumeric: true,
 				minlength: 6
 			},
 			registerConfirmpassword: {
@@ -41,7 +43,7 @@ $(function(){
 			},
 			registerPassword: {
 				required: "please provide a password",
-				minlength: "your password must be at least 6 characters long"
+				//minlength: "your password must be at least 6 characters long"
 			},
 			registerConfirmpassword: {
 				required: "please confirm your password",
@@ -53,6 +55,9 @@ $(function(){
 		  }
 	});
 });
+jQuery.validator.addMethod("lettersonly", function(value, element) {
+	return this.optional(element) || /^[a-z]+$/i.test(value);
+  }, "Letters only please"); 
 
 $(function(){
 	$("#userName").focus(function () {

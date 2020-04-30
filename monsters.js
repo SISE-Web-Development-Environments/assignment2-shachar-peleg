@@ -46,6 +46,8 @@ function generateMonsters(monstersNum, monstersArray){
 	console.log("finish monster");
 }
 
+
+
 function drawMonsters(){
 	var center = new Object();
 	for(index=0;index<monstersArray.length;index++){

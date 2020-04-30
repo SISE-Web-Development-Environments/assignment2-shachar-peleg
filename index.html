@@ -329,15 +329,10 @@
 		</div>
 	-->
 
-	<label for="username" class="username">USER NAME:<div id="display3"></div></label>
-</br>
-
-		<label for="lblScore" class="lblScore">SCORE:<div id="display1"></div></label>
-</br>
-		<label for="lblTime" class="lblTime">TIME:<div id="display2"></div></label>
-	</br>
-
-		<label for="lbllives" class="lives">LIVES:<div id="display"></div></label>
+	<label for="username" class="username"><strong>NAME:</strong> <div id="display3"></div></label>&nbsp&nbsp
+	<label for="lblScore" class="lblScore"><strong>SCORE:</strong><div id="display1"></div></label>&nbsp&nbsp
+	<label for="lblTime" class="lblTime"><strong>TIME:</strong><div id="display2"></div></label>&nbsp&nbsp
+	<label for="lbllives" class="lives"><strong>LIVES:</strong><div id="display"></div></label>
 		
 	
 
@@ -361,9 +356,93 @@
 			<img id="power" src="power.png" width="50" height="50" hidden/>
 
 		</div>
+		<div id="showSetting">
+			power :
+			<img id="powersetting" src="power.png" width="50" height="50" />
+			clock:
+			<img id="clocksetting" src="clock1.png" width="50" height="50" />
+			moving candy for 50 points :
+			<img id="gerrisetting" src="gerri1.png" width="50" height="50"/>
+			5 points candy:
+			15 points candy:
+			25 points candy:
+			monster:
+			<img id="monster" src="monster.png" width="50" height="50" hidden/>
 
+
+		</div>
 		<button id="newgame" onclick="return StartNewGame()">Start New Game</button>
 	</div>
+
+	<!---------the div for lose win -------->
+	<div id="lostLives" class="modal">
+		<div class="modal-content">
+		  <span class="close1">&times;</span>
+		  <style>  
+		  #lostLives{
+			text-align: center;
+		  }
+		</style>
+		<strong>Loser!!!</strong>	
+		</br>
+		  <img id="loser" src="loser.gif" width="350" height="200" />
+	</div>
+	</div>
+	
+<script> 
+	var modal = document.getElementById("lostLives");
+	var span = document.getElementsByClassName("close1")[0];
+	span.onclick = function() {
+		$("#lostLives").hide();
+	}
+</script>
+
+<div id="lostScore" class="modal">
+	<div class="modal-content">
+	  <span class="close2">&times;</span>
+	  <style>  
+	  #lostScore{
+		text-align: center;
+	  }
+	</style>
+	<label for="losePoint" class="losePoint">YOU ARE BETTER THAN &nbsp<div id="display4"></div> &nbsp POINTS !!!</label>	
+	</br>
+	  <img id="loser" src="loser.gif" width="350" height="200" />
+</div>
+</div>
+
+<script> 
+var modal = document.getElementById("lostScore");
+var span = document.getElementsByClassName("close2")[0];
+span.onclick = function() {
+	$("#lostScore").hide();
+}
+</script>
+
+<div id="win" class="modal">
+	<div class="modal-content">
+	  <span class="close3">&times;</span>
+	  <style>  
+	  #win{
+		text-align: center;
+	  }
+	</style>
+	<strong>WINNER!!!</strong>	
+	</br>
+	  <img id="winner" src="winner.gif" width="350" height="200" />
+</div>
+</div>
+	
+<script> 
+var modal = document.getElementById("win");
+var span = document.getElementsByClassName("close3")[0];
+span.onclick = function() {
+	$("#win").hide();
+}
+</script>
+
+
+
 
 <script> 
 	var modal = document.getElementById("aboutFrame");
@@ -383,12 +462,12 @@
 	}
 	
 	// When the user clicks anywhere outside of the modal, close it
-	/*
+	
 	window.onclick = function(event) {
 	  if (event.target == modal ) {
 		modal.style.display = "none";
 	  }
-	}*/
+	}
 
 	$(document).keyup(function (e) {
         if (e.keyCode === 27) {

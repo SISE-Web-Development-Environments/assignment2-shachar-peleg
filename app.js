@@ -313,21 +313,27 @@ function finishGame(bool)
 {//bool ==true it mean it come from end time
 	//bool = false it mean it come from end lives
 
+
 	if(bool==true)
 	{
 		if(score<100)
 		{
-			str="You are better than "+score+" points!";
-			alert(str);
+			getScoreForLose();
+			console.log("LOSESCORE")
+			var modal = document.getElementById("lostScore");
+		    modal.style.display = "block";
 		}
 		else
 		{
-			alert("Winner!!!");
+			var modal = document.getElementById("win");
+		modal.style.display = "block";
 		}
 	}
 	else
 	{
-		alert("Loser!");
+		var modal = document.getElementById("lostLives");
+		modal.style.display = "block";
+	
 	}
 }
 function putClockIcon()
@@ -372,8 +378,9 @@ function setTime()
 {
 	//lblTime=time;
 	currTime=currTime-1;
-	if(currTime<=0)
+	if(currTime<=0 || time<=0)
 	{
+		console.log("settime");
 		finishGame(true);
 		stopIntervals();
 		Mysound.stop;
@@ -554,4 +561,9 @@ function getScore()
 function getTime()
   {
 	document.getElementById("display2").innerHTML = currTime;
+}
+
+function getScoreForLose()
+  {
+	document.getElementById("display4").innerHTML = score;
 }

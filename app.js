@@ -96,6 +96,13 @@ function stopIntervals()
 
 
 function Start(){
+	getHowManyMonsters();
+getHowManyPoints();
+getTimeForSetting();
+getUp();
+getDown();
+getLeft();
+getRight();
 	getUserName();
 	clockOnBoard=false;
 	powerOnBoard=false;
@@ -134,14 +141,16 @@ function Start(){
 	);
 	interval1 = setInterval(UpdatePosition, 200);
 	interval2 = setInterval(getLives, 250);
-	interval7 = setInterval(getScore, 250);
-	interval8 = setInterval(getTime, 250);
 	interval3 =setInterval(setTime , 1000);
 	interval4=setInterval(putClockIcon,10000);
-	interval10=setInterval(putPowerIcon,10000);
 	interval5=setInterval(updatePositionToMonster,1200);
 	interval6=setInterval(updatePositionToMovingCandy,800);
+	interval7 = setInterval(getScore, 250);
+	interval8 = setInterval(getTime, 250);
 	interval9=setInterval(startMusic, 42000);
+	interval10=setInterval(putPowerIcon,10000);
+
+
 }
 
 function startMusic()
@@ -336,7 +345,6 @@ function UpdatePosition() {
 
 function putClockIcon()
 {
-	debugger;
 	console.log("clock");
 	if(clockOnBoard==false)//need to put the clock on board
 	{
@@ -356,7 +364,6 @@ function putClockIcon()
 
 function putPowerIcon()
 {
-	//debugger;
 	console.log("power");
 	if(powerOnBoard==false)//need to put the clock on board
 	{
@@ -443,3 +450,58 @@ function getScoreForLose()
 	document.getElementById("display4").innerHTML = score;
 }
 
+function getHowManyMonsters()
+  {
+	document.getElementById("display5").innerHTML = howManyMonster();
+}
+
+function getHowManyPoints()
+  {
+	document.getElementById("display6").innerHTML = howManyPoints;
+}
+function getTimeForSetting()
+  {
+	document.getElementById("display7").innerHTML = time;
+}
+function getUp()
+  {
+	  var temp = moveUp;
+	  if(moveUp==38)
+	  {
+		  temp="upButton";
+	  }
+	document.getElementById("display8").innerHTML = temp;
+}
+function getDown()
+  {
+	var temp = moveDown;
+	if(moveDown==40)
+	{
+		temp="downButton";
+	}
+	document.getElementById("display9").innerHTML = temp;
+}
+function getLeft()
+  {
+	var temp = moveLeft;
+	if(moveLeft==37)
+	{
+		temp="leftButton";
+	}
+	document.getElementById("display10").innerHTML = temp;
+}
+function getRight()
+  {
+	var temp = moveRight;
+	if(moveRight==39)
+	{
+		temp="rightButton";
+	}
+	document.getElementById("display11").innerHTML = temp;
+}
+
+
+moveUp=38;
+	moveDown=40;
+	moveRight=39;
+	moveLeft=37;

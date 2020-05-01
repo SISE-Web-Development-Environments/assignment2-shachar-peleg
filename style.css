@@ -5,11 +5,22 @@ a {
     text-decoration: none; 
 }
 
-footer
-{
+header {
+  padding: 3px;
+  text-align: left;
   background-color: #333;
-  color: rgb(255, 255, 255);
+  color: white;
+  font-size: 18px;
+}
 
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #333;
+  color: white;
+  text-align: center;
 }
 
 .navigation {
@@ -45,6 +56,43 @@ form {
 #lblTime , #display2{
   display: inline-block;
 }
+
+
+
+
+
+#MONSTER , #display5{
+  display: inline-block;
+}
+
+#POINT , #display6{
+  display: inline-block;
+}
+
+#TIME , #display7{
+  display: inline-block;
+}
+
+#UP , #display8{
+  display: inline-block;
+}
+
+#DOWN , #display9{
+  display: inline-block;
+}
+
+#LEFT , #display10{
+  display: inline-block;
+}
+
+#RIGHT , #display11{
+  display: inline-block;
+}
+
+
+
+
+
 #newgame
 {
   background: #030000;
@@ -64,12 +112,12 @@ form {
 }
 #gamecanvas
 {
-  height: 500px;
+  height: 575px;
 }
 #showSetting{
   border: 1px solid rgb(0, 0, 0);
-width: 150px;
-height: 500px;
+width: 155px;
+height: 575px;
 }
 
   canvas {
@@ -81,7 +129,7 @@ height: 500px;
     display: block;
 */
     width: 730px;
-    height: 500px;
+    height: 575px;
     border:1px solid #000000;
 }
   

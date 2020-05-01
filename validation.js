@@ -19,8 +19,8 @@ $(function(){
 				},
 				registerPassword: {
 				required: true,
-				alphanumeric: true,
-				minlength: 6
+				minlength: 6,
+				letterAndNumbers:true
 			},
 			registerConfirmpassword: {
 				required: true,
@@ -55,16 +55,13 @@ $(function(){
 		  }
 	});
 });
-jQuery.validator.addMethod("lettersonly", function(value, element) {
-	return this.optional(element) || /^[a-z]+$/i.test(value);
-  }, "Letters only please"); 
+jQuery.validator.addMethod("lettersAndNumbersonly", function(value, element) {
+	return this.optional(element) || (value.match(/[a-zA-Z]/) || value.match(/[0-9]/)); 
+  }, "Letters and numbers only please"); 
 
-$(function(){
-	$("#userName").focus(function () {
-		var first = $("#firstName").val();
-		var last=$("#lastName").val();
-		if (first&& last && !this.value) {
-			this.value = first.append(last);
-		}
-	});
-});
+  jQuery.validator.addMethod("letterAndNumbers", function(value, element) {
+	//return this.optional(element) || /^[a-z]+$/i.test(value) && value.match(/[0-9]/);
+	return this.optional(element) || (value.match(/[a-zA-Z]/) && value.match(/[0-9]/));
+  }, "Letters and numbers must please"); 
+
+

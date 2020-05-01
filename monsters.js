@@ -17,7 +17,6 @@ function howManyMonster(){
 		return 4;
 	}
 }
-
 function generateMonsters(monstersNum, monstersArray){
 	//debugger;
 	var monsterPos0 = new Object();
@@ -46,8 +45,6 @@ function generateMonsters(monstersNum, monstersArray){
 	console.log("finish monster");
 }
 
-
-
 function drawMonsters(){
 	var center = new Object();
 	for(index=0;index<monstersArray.length;index++){
@@ -58,13 +55,6 @@ function drawMonsters(){
 		var img = document.getElementById("monster");
 		ctx.drawImage(img, center.x-24, center.y-24 , 50 , 50);
 	}
-}
-
-function isOnBoard(i,j){
-	if(i>=0 && i<16 && j>=0 && j<10){
-		return true;
-	}
-	return false;
 }
 
 function MonsterMeetFood(i,j)

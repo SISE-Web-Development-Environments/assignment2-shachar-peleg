@@ -10,12 +10,12 @@ function drawMovingPoints(){
 	    ctx.drawImage(img, center.x-24, center.y-24 , 50 , 50);
     }
 }
+
 function generateMovingPoints(){
     var emptyCell = findRandomEmptyCell(board);
 	m_points.i=emptyCell[0];
 	m_points.j=emptyCell[1];
 }
-
 
 function randomMove(){
     if(!isOnBoard(m_points.i,m_points.j)){
@@ -52,8 +52,6 @@ function randomMove(){
     }
    // pacmanMeetMoovingPoints();
 }
-
-
 
 function updatePositionToMovingCandy()
 	{

@@ -7,19 +7,26 @@ var pac_color;
 var start_time;
 var currTime;
 var time_elapsed;
-var interval;
+var interval1;
 var interval2;
 var interval3;
 var interval4;
+var interval5;
+var interval6;
+var interval7;
+var interval8;
+var interval9;
+var interval10;
+
 var pos=4;
 var x ;
 var lives=5;
-var scoreToWin;
 var src;
 var Mysound;
 var clockOnBoard;
+var powerOnBoard;
 var clockPos;
-var gameIsOn=true;
+
 $(document).ready(function() {
 	context = canvas.getContext("2d");
 	//Start();
@@ -31,25 +38,51 @@ function StartNewGame()
 	Mysound.stop();
 	window.alert("new game");	
 	stopIntervals();
-
-	/*
-	removeEventListener("keydown",function(e) {
-		keysDown[e.keyCode] = true;
-	},false
-);
-removeEventListener("keyup",function(e) {
-	keysDown[e.keyCode] = false;
-},false
-);*/
-
 	Start();
+}
 
+function finishGame(bool)
+{
+	//bool ==true it mean it come from end time
+	//bool = false it mean it come from end lives
+	//gameIsOn=false;
+	Mysound.stop();
+	stopIntervals();
+	if(bool==true)
+	{
+		if(score<100)
+		{
+			getScoreForLose();
+			console.log("LOSESCORE")
+			var modal = document.getElementById("lostScore");
+		    modal.style.display = "block";
+		}
+		else
+		{
+			var modal = document.getElementById("win");
+		modal.style.display = "block";
+		}
+	}
+	else
+	{
+		var modal = document.getElementById("lostLives");
+		modal.style.display = "block";
+	}
+
+}
+
+function exitGame()
+{
+	if(Mysound!=null)
+	Mysound.stop();
+	stopIntervals();
 }
 
 function stopIntervals()
 {
+	if(Mysound!=null)
 	Mysound.stop();
-	window.clearInterval(interval);
+	window.clearInterval(interval1);
 	window.clearInterval(interval2);
 	window.clearInterval(interval3);
 	window.clearInterval(interval4);
@@ -58,18 +91,8 @@ function stopIntervals()
 	window.clearInterval(interval7);
 	window.clearInterval(interval8);
 	window.clearInterval(interval9);
+	window.clearInterval(interval10);
 }
-
-function boardToZero()
-{
-	for (var i = 0; i < 16; i++) {
-		board[i] = new Array();
-		for(var j = 0;j<10;j++){
-			board[i][j]=0;
-		}
-	}
-}
-
 
 
 function Start(){
@@ -78,13 +101,10 @@ function Start(){
 	powerOnBoard=false;
 	scoreToWin=0;
 	Mysound = new sound("music.mp3");
-	Mysound.play();
+	//Mysound.play();
 	board = new Array();
 	score = 0;
 	lives=5;
-	pac_color = "yellow";
-	var cnt = 160;
-	var pacman_remain = 1;
 	monsters_remain=howManyMonster();
 	currTime = time;
 	for (var i = 0; i < 16; i++) {
@@ -112,23 +132,22 @@ function Start(){
 			keysDown[e.keyCode] = false;
 		},false
 	);
-	interval = setInterval(UpdatePosition, 250);
+	interval1 = setInterval(UpdatePosition, 200);
 	interval2 = setInterval(getLives, 250);
 	interval7 = setInterval(getScore, 250);
 	interval8 = setInterval(getTime, 250);
 	interval3 =setInterval(setTime , 1000);
 	interval4=setInterval(putClockIcon,10000);
-	interval4=setInterval(putPowerIcon,20000);
-	interval5=setInterval(updatePositionToMonster,1500);
-	interval6=setInterval(updatePositionToMovingCandy,1500);
+	interval10=setInterval(putPowerIcon,10000);
+	interval5=setInterval(updatePositionToMonster,1200);
+	interval6=setInterval(updatePositionToMovingCandy,800);
 	interval9=setInterval(startMusic, 42000);
 }
 
 function startMusic()
 {
-	console.log("music");
 	Mysound = new sound("music.mp3");
-	 Mysound.play();
+	 //Mysound.play();
 }
 
 function Draw(x) {
@@ -246,6 +265,7 @@ function Draw(x) {
 	drawMonsters();
 	drawMovingPoints();
 }
+
 function UpdatePosition() {
 	board[shape.i][shape.j] = 0;
 	x=GetKeyPressed();
@@ -307,41 +327,17 @@ function UpdatePosition() {
 	else{
 		board[shape.i][shape.j] = 2;
 	}
-	if(gameIsOn){
+	
 		Draw(x);
-	}
+	
 }
 
-function finishGame(bool)
-{//bool ==true it mean it come from end time
-	//bool = false it mean it come from end lives
-	gameIsOn=false;
-	Mysound.stop();
-	if(bool==true)
-	{
-		if(score<100)
-		{
-			getScoreForLose();
-			console.log("LOSESCORE")
-			var modal = document.getElementById("lostScore");
-		    modal.style.display = "block";
-		}
-		else
-		{
-			var modal = document.getElementById("win");
-		modal.style.display = "block";
-		}
-	}
-	else
-	{
-		var modal = document.getElementById("lostLives");
-		modal.style.display = "block";
-	
-	}
-}
+
+
 function putClockIcon()
 {
-	console.log("clockIcon");
+	debugger;
+	console.log("clock");
 	if(clockOnBoard==false)//need to put the clock on board
 	{
 	var emptyCell;
@@ -353,62 +349,40 @@ function putClockIcon()
 	}
 	else //need to remove the clock from the board
 	{
-		console.log("delete clockicon")
 		board[clockPos[0]][clockPos[1]] = 0;//represent clock
 		clockOnBoard=false;
 	}
 }
+
 function putPowerIcon()
 {
-	console.log("clockIcon");
-	if(clockOnBoard==false)//need to put the clock on board
+	//debugger;
+	console.log("power");
+	if(powerOnBoard==false)//need to put the clock on board
 	{
 	var emptyCell;
 	emptyCell = findRandomEmptyCell(board);
-	clockPos=emptyCell;
+	powerPos=emptyCell;
 	board[emptyCell[0]][emptyCell[1]] = 10;//represent power
-	clockOnBoard=true;
+	powerOnBoard=true;
 	}
 	else //need to remove the clock from the board
 	{
-		console.log("delete clockicon")
-		board[clockPos[0]][clockPos[1]] = 0;//represent clock
-		clockOnBoard=false;
+		board[powerPos[0]][powerPos[1]] = 0;//represent clock
+		powerOnBoard=false;
 	}
 }
 
 function setTime()
 {
-	//lblTime=time;
 	currTime=currTime-1;
 	if(currTime<=0 || time<=0)
 	{
-		console.log("settime");
 		finishGame(true);
-		stopIntervals();
-		Mysound.stop;
-		//window.alert("finish time");
 	}
 }
 
-function isAWall(i,j){
-	if(board[i][j]==4){
-		return true;
-	}
-	else{
-		return false;
-	}
-}
 
-function findRandomEmptyCell(board) {
-	var i = Math.floor(Math.random() * 16);
-	var j = Math.floor(Math.random() * 10);
-	while (board[i][j] != 0) {
-		i = Math.floor(Math.random() * 16 );
-		j = Math.floor(Math.random() * 10  );
-	}
-	return [i, j];
-}
 
 function GetKeyPressed() {
 	if (keysDown[moveUp]) {
@@ -427,107 +401,6 @@ function GetKeyPressed() {
 		pos=4;
 		return 4;
 	}
-}
-
-function generetaWalls(){
-	board[1][1]=4;
-	board[1][3]=4;
-	board[1][4]=4;
-	board[1][7]=4;
-	board[1][6]=4;
-
-	board[2][1]=4;
-	board[2][3]=4;
-	board[2][7]=4;
-
-	board[3][1]=4;
-	board[3][2]=4;
-	board[3][3]=4;
-	board[3][5]=4;
-	board[3][7]=4;
-	board[3][8]=4;
-
-	board[4][1]=4;
-	board[4][3]=4;
-	board[4][5]=4;
-	board[4][7]=4;
-
-	board[5][1]=4;
-	board[5][3]=4;
-	board[5][5]=4;
-	board[5][6]=4;
-	board[5][7]=4;
-
-	board[6][6]=4;
-	board[6][9]=4;
-
-	board[7][1]=4;
-	board[7][3]=4;
-	board[7][4]=4;
-	board[7][8]=4;
-	board[7][9]=4;
-
-	board[8][1]=4;
-	board[8][3]=4;
-	board[8][4]=4;
-	board[8][8]=4;
-	board[8][9]=4;
-
-	board[9][6]=4;
-	board[9][9]=4;
-
-	board[10][1]=4;
-	board[10][3]=4;
-	board[10][5]=4;
-	board[10][6]=4;
-	board[10][7]=4;
-
-	board[11][1]=4;
-	board[11][3]=4;
-	board[11][5]=4;
-	board[11][7]=4;
-
-	board[12][1]=4;
-	board[12][2]=4;
-	board[12][3]=4;
-	board[12][5]=4;
-	board[12][7]=4;
-	board[12][8]=4;
-
-	board[13][1]=4;
-	board[13][3]=4;
-	board[13][7]=4;
-
-	board[14][1]=4;
-	board[14][3]=4;
-	board[14][4]=4;
-	board[14][6]=4;
-	board[14][7]=4;
-}
-
-function generateFood(){
-	console.log(howManyPoints);
-	var emptyCell;
-	howManyPoints=parseInt(howManyPoints);
-	var food_remain=howManyPoints;
-	while(!food_remain==0){
-		emptyCell = findRandomEmptyCell(board);
-		if(food_remain>howManyPoints-howManyPoints*0.1){//25 points food
-			board[emptyCell[0]][emptyCell[1]] = 6;
-			scoreToWin=scoreToWin+25;
-		}
-		else if(food_remain>howManyPoints-howManyPoints*0.4){//15 points food
-			board[emptyCell[0]][emptyCell[1]] = 5;
-			scoreToWin=scoreToWin+15;
-		}
-		else{//5 points food
-			board[emptyCell[0]][emptyCell[1]] = 1;
-			scoreToWin=scoreToWin+5;
-		}
-		food_remain--;
-	}
-	console.log("finish food");
-
 }
 
 function sound(src) {

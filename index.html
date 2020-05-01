@@ -141,7 +141,7 @@
 		  <p> 
 			  This Pacman game created by Shachar Meretz & Peleg Biton
 			</br>
-			We used jQuery Plugin to validate registeration fields, and here we need to add more....maybe modals?
+			We used jQuery Plugin to validate registeration fields, hide modal and use esc button to exit modal
 		  </br>
 		  We used the templete from class
 		  </br>
@@ -170,7 +170,7 @@
 			</style>
 
 		</br>
-		<legend>setting</legend>
+		<legend></legend>
 
 	<form id="settingForm" name="settingForm" method="GET" autocomplete="off">
 
@@ -561,11 +561,11 @@ span.onclick = function() {
 	
 	// When the user clicks anywhere outside of the modal, close it
 	
-//	window.onclick = function(event) {
-//	  if (event.target == modal ) {
-//		modal.style.display = "none";
-//	  }
-//	}
+	window.onclick = function(event) {
+	  if (event.target == modal ) {
+		modal.style.display = "none";
+	  }
+	}
 
 	$(document).keyup(function (e) {
         if (e.keyCode === 27) {

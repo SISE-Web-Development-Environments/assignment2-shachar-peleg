@@ -4,7 +4,9 @@ p{
 a { 
     text-decoration: none; 
 }
-
+h7{
+  font-size: 42px;
+}
 header {
   padding: 3px;
   text-align: left;

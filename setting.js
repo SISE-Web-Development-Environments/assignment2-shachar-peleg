@@ -112,7 +112,8 @@ function GetSetting()
 	monster3 = document.getElementById("3monster").checked;
 	monster4 = document.getElementById("4monster").checked;
 	time = document.getElementById("time").value;
-
+	defualtMovementSetting();
+	
 	Start();
 	show_imageFivePoints();
 	show_imageFifteenPoints();
@@ -120,7 +121,20 @@ function GetSetting()
 	return show('game' , 'setting');
 
 }
-
+function defualtMovementSetting(){
+	if(moveUp==null){
+		moveUp=38;
+	}
+	if(moveDown==null){
+		moveDown=40;
+	}
+	if(moveRight==null){
+		moveRight=39;
+	}
+	if(moveLeft==null){
+		moveLeft=37;
+	}
+}
 function randomSetting()
 {
 	moveUp=38;

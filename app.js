@@ -19,6 +19,7 @@ var src;
 var Mysound;
 var clockOnBoard;
 var clockPos;
+var gameIsOn=true;
 $(document).ready(function() {
 	context = canvas.getContext("2d");
 	//Start();
@@ -96,10 +97,8 @@ function Start(){
 	generetaWalls();
 	generateMonsters(monsters_remain, monstersArray);
 	generatePacman();
-	console.log("3");
 	generateMovingPoints();
 	generateFood();
-	console.log("4");
 	keysDown = {};
 
 	console.log(scoreToWin);
@@ -247,7 +246,6 @@ function Draw(x) {
 	drawMonsters();
 	drawMovingPoints();
 }
-
 function UpdatePosition() {
 	board[shape.i][shape.j] = 0;
 	x=GetKeyPressed();
@@ -256,14 +254,17 @@ function UpdatePosition() {
 	if (board[shape.i][shape.j] == 1) {
 		//eat a 5 point burger
 		score=score+5;
+		howManyPoints--;
 	}
 	else if (board[shape.i][shape.j] == 5) {
 		//eat a 15 point jellyfish
 		score=score+15;
+		howManyPoints--;
 	}
 	else if (board[shape.i][shape.j] == 6) {
 		//eat a 25 point plankton
 		score=score+25;
+		howManyPoints--;
 	}
 	if (board[shape.i][shape.j] == 8) {
 		//catch the clock
@@ -272,6 +273,9 @@ function UpdatePosition() {
 	if (board[shape.i][shape.j] == 10) {
 		//catch the clock
 		lives=lives+1;
+	}
+	if(howManyPoints==0){
+		finishGame(true);
 	}
 	if (pacmanMeetMonster()) {
 		lives--;
@@ -303,12 +307,7 @@ function UpdatePosition() {
 	else{
 		board[shape.i][shape.j] = 2;
 	}
-
-	if (score ==scoreToWin) {//just for now
-		//window.clearInterval(interval);
-		Mysound.stop();
-		window.alert("Game completed");
-	} else {
+	if(gameIsOn){
 		Draw(x);
 	}
 }
@@ -316,8 +315,8 @@ function UpdatePosition() {
 function finishGame(bool)
 {//bool ==true it mean it come from end time
 	//bool = false it mean it come from end lives
-
-
+	gameIsOn=false;
+	Mysound.stop();
 	if(bool==true)
 	{
 		if(score<100)
@@ -459,13 +458,13 @@ function generetaWalls(){
 	board[5][6]=4;
 	board[5][7]=4;
 
-	board[6][1]=4;
-	board[6][3]=4;
-	board[6][5]=4;
 	board[6][6]=4;
-	board[6][7]=4;
+	board[6][9]=4;
 
-	board[7][6]=4;
+	board[7][1]=4;
+	board[7][3]=4;
+	board[7][4]=4;
+	board[7][8]=4;
 	board[7][9]=4;
 
 	board[8][1]=4;
@@ -511,7 +510,6 @@ function generateFood(){
 	var emptyCell;
 	howManyPoints=parseInt(howManyPoints);
 	var food_remain=howManyPoints;
-	console.log(food_remain);
 	while(!food_remain==0){
 		emptyCell = findRandomEmptyCell(board);
 		if(food_remain>howManyPoints-howManyPoints*0.1){//25 points food

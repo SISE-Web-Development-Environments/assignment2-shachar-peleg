@@ -21,8 +21,8 @@ function checkIfPasswordCorrect(username,password) {
 		//var body = document.getElementsByTagName('body')[0];
 		//body.style.backgroundImage = 'url(back.jpg)';
 		usernameForDisplay=username;
+		debugger;
 		return show('setting','login');
-		//debugger;
 
 	}
 	else

@@ -113,7 +113,7 @@ function GetSetting()
 	monster4 = document.getElementById("4monster").checked;
 	time = document.getElementById("time").value;
 	defualtMovementSetting();
-	
+
 	Start();
 	show_imageFivePoints();
 	show_imageFifteenPoints();
@@ -215,7 +215,6 @@ function randomSetting()
 	 time=parseInt(time);
 	 
 
-	 console.log("setting");
 	 Start();
 	 show_imageFivePoints();
 	 show_imageFifteenPoints();

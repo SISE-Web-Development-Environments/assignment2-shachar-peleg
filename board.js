@@ -108,7 +108,6 @@ function generetaWalls(){
 
 
 function generateFood(){
-	console.log(howManyPoints);
 	var emptyCell;
 	howManyPoints=parseInt(howManyPoints);
 	var food_remain=howManyPoints;

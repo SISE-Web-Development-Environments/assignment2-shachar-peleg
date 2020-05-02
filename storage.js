@@ -1,7 +1,6 @@
 var usernameForDisplay;
 	
 function login(){
-	//debugger;
 		const loginUser=document.getElementById("user");
 		const loginPassword=document.getElementById("password");
 		const key=loginUser.value;
@@ -26,7 +25,6 @@ function checkIfPasswordCorrect(username,password) {
 		//var body = document.getElementsByTagName('body')[0];
 		//body.style.backgroundImage = 'url(back.jpg)';
 		usernameForDisplay=username;
-		//debugger;
 		console.log("enter to show setting");
 		return showall('setting','login' , 'welcome' , 'register');
 
@@ -55,13 +53,11 @@ function checkIfUserNameCorrect(username) {
 	if(user!=null)
 		return true;
 	console.log("false");
-	alert("user name / password are wrong. try again")
 	return false;
 }
 
 
 function show(shown, hidden1) {
-	//debugger;
 	if(shown!="game")
 	{
 		console.log("shown is not game");
@@ -121,10 +117,19 @@ function showandalert(shown, hidden1) {
 	return true;
 }
 
-
+function registerNewUser(){
+	debugger;
+		const un=document.getElementById("userName");
+		const pw=document.getElementById("registerPassword");
+		const register_btn=document.getElementById("register_btn");
+		const key=un.value;
+		const value=pw.value;
+		store(key,value);
+}
 
 	/*
 	register_btn.onclick=function(){
+		debugger;
 		const un=document.getElementById("userName");
 		const pw=document.getElementById("registerPassword");
 		const register_btn=document.getElementById("register_btn");
@@ -132,8 +137,8 @@ function showandalert(shown, hidden1) {
 		const value=pw.value;
 		store(key,value);
 	};
-*/
 
+*/
 	
 
 

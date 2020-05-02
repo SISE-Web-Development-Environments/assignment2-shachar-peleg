@@ -41,8 +41,6 @@ function generateMonsters(monstersNum, monstersArray){
 		monsterPos3.j=0;
 		monstersArray[3]=monsterPos3;
 	}
-	//debugger;
-	console.log("finish monster");
 }
 
 function drawMonsters(){

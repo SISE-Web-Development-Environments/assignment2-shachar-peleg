@@ -26,6 +26,7 @@ var Mysound;
 var clockOnBoard;
 var powerOnBoard;
 var clockPos;
+var currGamePoints;
 
 $(document).ready(function() {
 	context = canvas.getContext("2d");
@@ -53,7 +54,6 @@ function finishGame(bool)
 		if(score<100)
 		{
 			getScoreForLose();
-			console.log("LOSESCORE")
 			var modal = document.getElementById("lostScore");
 		    modal.style.display = "block";
 		}
@@ -104,22 +104,18 @@ getDown();
 getLeft();
 getRight();
 	getUserName();
+	currGamePoints=howManyPoints;
 	clockOnBoard=false;
 	powerOnBoard=false;
 	scoreToWin=0;
 	Mysound = new sound("music.mp3");
-	//Mysound.play();
+	Mysound.play();
 	board = new Array();
 	score = 0;
 	lives=5;
 	monsters_remain=howManyMonster();
 	currTime = time;
-	for (var i = 0; i < 16; i++) {
-		board[i] = new Array();
-		for(var j = 0;j<10;j++){
-			board[i][j]=0;
-		}
-	}
+	boardToZero();
 
 	generetaWalls();
 	generateMonsters(monsters_remain, monstersArray);
@@ -127,8 +123,6 @@ getRight();
 	generateMovingPoints();
 	generateFood();
 	keysDown = {};
-
-	console.log(scoreToWin);
 
 	addEventListener("keydown",	function(e) {
 			keysDown[e.keyCode] = true;
@@ -156,7 +150,7 @@ getRight();
 function startMusic()
 {
 	Mysound = new sound("music.mp3");
-	 //Mysound.play();
+	Mysound.play();
 }
 
 function Draw(x) {
@@ -283,17 +277,17 @@ function UpdatePosition() {
 	if (board[shape.i][shape.j] == 1) {
 		//eat a 5 point burger
 		score=score+5;
-		howManyPoints--;
+		currGamePoints--;
 	}
 	else if (board[shape.i][shape.j] == 5) {
 		//eat a 15 point jellyfish
 		score=score+15;
-		howManyPoints--;
+		currGamePoints--;
 	}
 	else if (board[shape.i][shape.j] == 6) {
 		//eat a 25 point plankton
 		score=score+25;
-		howManyPoints--;
+		currGamePoints--;
 	}
 	if (board[shape.i][shape.j] == 8) {
 		//catch the clock
@@ -303,7 +297,7 @@ function UpdatePosition() {
 		//catch the clock
 		lives=lives+1;
 	}
-	if(howManyPoints==0){
+	if(currGamePoints==0){
 		finishGame(true);
 	}
 	if (pacmanMeetMonster()) {
@@ -345,7 +339,6 @@ function UpdatePosition() {
 
 function putClockIcon()
 {
-	console.log("clock");
 	if(clockOnBoard==false)//need to put the clock on board
 	{
 	var emptyCell;
@@ -364,7 +357,6 @@ function putClockIcon()
 
 function putPowerIcon()
 {
-	console.log("power");
 	if(powerOnBoard==false)//need to put the clock on board
 	{
 	var emptyCell;

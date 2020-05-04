@@ -1,6 +1,7 @@
 var context;
 var shape = new Object();
 var m_points=new Object();
+var monstersArray;
 var board;
 var score;
 var pac_color;
@@ -104,6 +105,7 @@ getDown();
 getLeft();
 getRight();
 	getUserName();
+	monstersArray=new Array();
 	currGamePoints=howManyPoints;
 	clockOnBoard=false;
 	powerOnBoard=false;

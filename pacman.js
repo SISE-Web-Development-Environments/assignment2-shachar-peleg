@@ -11,13 +11,8 @@ function pacmanMeetMoovingPoints(){
 function pacmanMeetMonster(){
 	for(index=0; index<monstersArray.length;index++){
 		if(shape.i==monstersArray[index].i && shape.j==monstersArray[index].j){
-			//debugger;
 			return true;
-			//debugger;
 		}
-		//else{
-		//	return false;
-		//}
 	}
 	return false;
 }

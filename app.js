@@ -155,8 +155,6 @@ function startMusic()
 
 function Draw(x) {
 	canvas.width = canvas.width; //clean board
-//	lblScore.value = score;
-//	lblTime.value=currTime;
 	for (var i = 0; i < 16; i++) {
 		for (var j = 0; j < 10; j++) {
 			var center = new Object();

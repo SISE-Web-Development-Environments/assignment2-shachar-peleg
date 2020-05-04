@@ -43,7 +43,6 @@ $(function(){
 			},
 			registerPassword: {
 				required: "please provide a password",
-				//minlength: "your password must be at least 6 characters long"
 			},
 			registerConfirmpassword: {
 				required: "please confirm your password",
@@ -60,7 +59,6 @@ jQuery.validator.addMethod("lettersAndNumbersonly", function(value, element) {
   }, "Letters and numbers only please"); 
 
   jQuery.validator.addMethod("letterAndNumbers", function(value, element) {
-	//return this.optional(element) || /^[a-z]+$/i.test(value) && value.match(/[0-9]/);
 	return this.optional(element) || (value.match(/[a-zA-Z]/) && value.match(/[0-9]/));
   }, "Letters and numbers must please"); 
 

@@ -22,8 +22,6 @@ function checkIfPasswordCorrect(username,password) {
 	if(userPassword==password)
 	{	
 		console.log("password is equal");
-		//var body = document.getElementsByTagName('body')[0];
-		//body.style.backgroundImage = 'url(back.jpg)';
 		usernameForDisplay=username;
 		console.log("enter to show setting");
 		return showall('setting','login' , 'welcome' , 'register');
@@ -118,7 +116,6 @@ function showandalert(shown, hidden1) {
 }
 
 function registerNewUser(){
-	debugger;
 		const un=document.getElementById("userName");
 		const pw=document.getElementById("registerPassword");
 		const register_btn=document.getElementById("register_btn");
@@ -127,30 +124,3 @@ function registerNewUser(){
 		store(key,value);
 }
 
-	/*
-	register_btn.onclick=function(){
-		debugger;
-		const un=document.getElementById("userName");
-		const pw=document.getElementById("registerPassword");
-		const register_btn=document.getElementById("register_btn");
-		const key=un.value;
-		const value=pw.value;
-		store(key,value);
-	};
-
-*/
-	
-
-
-	/*
-	localStorage.setItem("p","p");
-	//localStorage.removeItem("pppppp");
-	//key=localStorage.key(0);
-	//myUser=localStorage.getItem("pppp")
-	//value=localStorage.value;
-	console.log(localStorage);
-	//console.log(myUser);
-	//console.log(value);
-	
-</script>
-*/

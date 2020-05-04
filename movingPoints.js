@@ -50,7 +50,6 @@ function randomMove(){
             }
         }
     }
-   // pacmanMeetMoovingPoints();
 }
 
 function updatePositionToMovingCandy()

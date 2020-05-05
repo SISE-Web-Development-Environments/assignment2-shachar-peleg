@@ -1,6 +1,7 @@
 var usernameForDisplay;
 	
 function login(){
+	localStorage.setItem("p","p");
 		const loginUser=document.getElementById("user");
 		const loginPassword=document.getElementById("password");
 		const key=loginUser.value;
